@@ -1,10 +1,17 @@
+import { Routes, Route } from "react-router-dom";
 
-const App = () => {
+// Page Imports
+import Home from "./pages/Home.jsx";
+
+export default function App() {
   return (
-    <div>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
-    </div>
-  );
-};
+    <Routes>
+      {/* Storefront Routes */}
+      <Route path="/" element={<Home />} />
 
-export default App;
+      {/* Admin Routes */}
+      {/* <Route path="/admin/products" element={<ManageProducts />} />
+      <Route path="/admin/orders" element={<ManageOrders />} /> */}
+    </Routes>
+  );
+}
