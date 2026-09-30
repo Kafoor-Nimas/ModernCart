@@ -1,8 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-
 const AppContext = createContext();
-
 
 export function AppProvider({ children }) {
   // Global States
@@ -17,7 +15,7 @@ export function AppProvider({ children }) {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item,
         );
       }
       return [...prev, { ...product, qty: 1 }];
@@ -33,7 +31,7 @@ export function AppProvider({ children }) {
     setWishlist((prev) =>
       prev.includes(productId)
         ? prev.filter((id) => id !== productId)
-        : [...prev, productId]
+        : [...prev, productId],
     );
   };
 
