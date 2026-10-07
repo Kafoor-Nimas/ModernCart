@@ -4,7 +4,7 @@ export default function PromoBanner() {
   const { isDarkMode } = useApp();
 
   return (
-    <section className="w-full px-6 py-10 max-w-[1600px] mx-auto">
+    <section className="w-full px-6 py-10 max-w-[1700px] mx-auto">
       <div
         className={`relative w-full rounded-3xl p-8 md:p-14 overflow-hidden shadow-lg ${
           isDarkMode

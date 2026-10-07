@@ -32,7 +32,7 @@ export default function Home() {
 
         {/* Handpicked Featured Section */}
         <section
-          className="w-full px-6 py-16 max-w-[1600px] mx-auto"
+          className="w-full px-6 py-16 max-w-[1700px] mx-auto"
           id="featured"
         >
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">

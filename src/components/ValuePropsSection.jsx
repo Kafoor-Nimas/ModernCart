@@ -4,7 +4,7 @@ export default function ValuePropsSection() {
   const { isDarkMode } = useApp();
 
   return (
-    <section className="w-full px-6 py-12 max-w-[1600px] mx-auto">
+    <section className="w-full px-6 py-12 max-w-[1700px] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div
           className={`p-6 rounded-2xl shadow-sm flex items-start gap-4 ${

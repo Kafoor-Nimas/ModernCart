@@ -14,7 +14,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="w-full px-6 py-14 max-w-[1600px] mx-auto">
+    <section className="w-full px-6 py-14 max-w-[1700px] mx-auto">
       <div
         className={`w-full rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col items-center text-center ${
           isDarkMode

@@ -12,7 +12,7 @@ export default function Footer() {
           : "bg-white border-slate-200"
       }`}
     >
-      <div className="max-w-[1600px] mx-auto px-6 py-12">
+      <div className="max-w-[1700px] mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <h4
