@@ -1,48 +1,48 @@
-import { createContext, useContext, useState } from "react";
+import  { createContext, useContext, useState } from "react";
 
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
-  // Global States
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState(["fp-1"]);
-  const [user, setUser] = useState(null); // { name: "Admin", role: "admin" }
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [toasts, setToasts] = useState([]);
 
-  // Cart Functions
+  const showToast = (message, icon = "check_circle") => {
+    const id = Date.now() + Math.random();
+    setToasts((prev) => [...prev, { id, message, icon }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 3200);
+  };
+
   const addToCart = (product) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item,
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
         );
       }
       return [...prev, { ...product, qty: 1 }];
     });
+    showToast(`Added "${product.title}" to your cart`);
   };
 
-  const removeFromCart = (productId) => {
-    setCart((prev) => prev.filter((item) => item.id !== productId));
-  };
-
-  // Wishlist Functions
   const toggleWishlist = (productId) => {
-    setWishlist((prev) =>
-      prev.includes(productId)
-        ? prev.filter((id) => id !== productId)
-        : [...prev, productId],
-    );
+    setWishlist((prev) => {
+      const isFav = prev.includes(productId);
+      if (isFav) {
+        showToast("Removed from wishlist", "favorite_border");
+        return prev.filter((id) => id !== productId);
+      } else {
+        showToast("Saved to your wishlist", "favorite");
+        return [...prev, productId];
+      }
+    });
   };
 
-  // Auth Functions
-  const login = (userData) => setUser(userData);
-  const logout = () => setUser(null);
-
-  // Dark Mode Toggle
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
-
-  // Total Item Count in Cart
   const cartCount = cart.reduce((total, item) => total + item.qty, 0);
 
   return (
@@ -51,20 +51,25 @@ export function AppProvider({ children }) {
         cart,
         cartCount,
         wishlist,
-        user,
         isDarkMode,
+        toasts,
         addToCart,
-        removeFromCart,
         toggleWishlist,
-        login,
-        logout,
         toggleDarkMode,
+        showToast,
       }}
     >
-      <div className={isDarkMode ? "dark" : ""}>{children}</div>
+      <div
+        className={
+          isDarkMode
+            ? "min-h-screen antialiased bg-[#0F172A] text-[#CBD5E1]"
+            : "min-h-screen antialiased bg-slate-50 text-slate-900"
+        }
+      >
+        {children}
+      </div>
     </AppContext.Provider>
   );
 }
 
-// Custom Hook for easy consumption in components
 export const useApp = () => useContext(AppContext);

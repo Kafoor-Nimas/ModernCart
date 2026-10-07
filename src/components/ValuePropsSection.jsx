@@ -7,94 +7,103 @@ export default function ValuePropsSection() {
     <section className="w-full px-6 py-12 max-w-[1600px] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div
-          className={`p-6 rounded-2xl border shadow-sm flex items-start gap-4 ${
+          className={`p-6 rounded-2xl shadow-sm flex items-start gap-4 ${
             isDarkMode
-              ? "bg-slate-900 border-slate-800"
-              : "bg-white border-slate-100"
+              ? "bg-[#1E293B] border border-[#334155]"
+              : "bg-white border border-slate-100"
           }`}
         >
           <div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
-              isDarkMode ? "bg-slate-800" : "bg-blue-50"
-            }`}
+            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+            style={{
+              backgroundColor: isDarkMode ? "rgba(59, 130, 246, 0.15)" : "#EFF6FF",
+            }}
           >
-            <span className="material-symbols-outlined text-blue-600 text-[24px]">
+            <span
+              className="material-symbols-outlined text-[24px]"
+              style={{ color: isDarkMode ? "#60A5FA" : "#2563EB" }}
+            >
               verified_user
             </span>
           </div>
           <div>
             <h4
               className={`text-base font-semibold mb-1 ${
-                isDarkMode ? "text-white" : "text-slate-900"
+                isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
               }`}
             >
               Authenticity Guaranteed
             </h4>
-            <p className="text-xs text-slate-400">
-              Every product is sourced directly from authenticated master
-              craftsmen and licensed brands.
+            <p className="text-xs" style={{ color: "#94A3B8" }}>
+              Every product is sourced directly from authenticated master craftsmen and licensed brands.
             </p>
           </div>
         </div>
 
         <div
-          className={`p-6 rounded-2xl border shadow-sm flex items-start gap-4 ${
+          className={`p-6 rounded-2xl shadow-sm flex items-start gap-4 ${
             isDarkMode
-              ? "bg-slate-900 border-slate-800"
-              : "bg-white border-slate-100"
+              ? "bg-[#1E293B] border border-[#334155]"
+              : "bg-white border border-slate-100"
           }`}
         >
           <div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
-              isDarkMode ? "bg-slate-800" : "bg-emerald-50"
-            }`}
+            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+            style={{
+              backgroundColor: isDarkMode ? "rgba(34, 197, 94, 0.15)" : "#F0FDF4",
+            }}
           >
-            <span className="material-symbols-outlined text-emerald-600 text-[24px]">
+            <span
+              className="material-symbols-outlined text-[24px]"
+              style={{ color: isDarkMode ? "#22C55E" : "#16A34A" }}
+            >
               published_with_changes
             </span>
           </div>
           <div>
             <h4
               className={`text-base font-semibold mb-1 ${
-                isDarkMode ? "text-white" : "text-slate-900"
+                isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
               }`}
             >
               30-Day Hassle-Free Returns
             </h4>
-            <p className="text-xs text-slate-400">
-              Not completely satisfied? Initiate a doorstep pickup return within
-              thirty days for an instant refund.
+            <p className="text-xs" style={{ color: "#94A3B8" }}>
+              Not completely satisfied? Initiate a doorstep pickup return within thirty days for an instant refund.
             </p>
           </div>
         </div>
 
         <div
-          className={`p-6 rounded-2xl border shadow-sm flex items-start gap-4 ${
+          className={`p-6 rounded-2xl shadow-sm flex items-start gap-4 ${
             isDarkMode
-              ? "bg-slate-900 border-slate-800"
-              : "bg-white border-slate-100"
+              ? "bg-[#1E293B] border border-[#334155]"
+              : "bg-white border border-slate-100"
           }`}
         >
           <div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
-              isDarkMode ? "bg-slate-800" : "bg-blue-50"
-            }`}
+            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+            style={{
+              backgroundColor: isDarkMode ? "rgba(96, 165, 250, 0.15)" : "#EFF6FF",
+            }}
           >
-            <span className="material-symbols-outlined text-blue-600 text-[24px]">
+            <span
+              className="material-symbols-outlined text-[24px]"
+              style={{ color: isDarkMode ? "#60A5FA" : "#2563EB" }}
+            >
               support_agent
             </span>
           </div>
           <div>
             <h4
               className={`text-base font-semibold mb-1 ${
-                isDarkMode ? "text-white" : "text-slate-900"
+                isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
               }`}
             >
               24/7 Dedicated Concierge
             </h4>
-            <p className="text-xs text-slate-400">
-              Our team of human product specialists is available day and night
-              to answer specs and styling inquiries.
+            <p className="text-xs" style={{ color: "#94A3B8" }}>
+              Our team of human product specialists is available day and night to answer specs and styling inquiries.
             </p>
           </div>
         </div>
