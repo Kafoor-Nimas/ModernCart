@@ -1,12 +1,14 @@
 import { useApp } from "../context/AppContext";
 import { CATEGORIES } from "../data/data";
 
-
 export default function CategoriesSection({ onSelectCategory }) {
   const { isDarkMode } = useApp();
 
   return (
-    <section className="w-full px-6 py-12 max-w-7xl mx-auto" id="categories">
+    <section
+      className="w-full px-6 py-12 max-w-[1600px] mx-auto"
+      id="categories"
+    >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
           <div className="text-xs font-semibold text-blue-600 tracking-wider uppercase mb-1">

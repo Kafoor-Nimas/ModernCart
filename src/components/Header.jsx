@@ -14,7 +14,7 @@ export default function Header() {
           : "bg-white/90 border-slate-200 text-slate-900"
       }`}
     >
-      <div className="h-20 max-w-7xl mx-auto px-6 flex items-center justify-between gap-6">
+      <div className="h-20 max-w-[1600px] mx-auto px-6 flex items-center justify-between gap-6">
         {/* Brand & Navigation */}
         <div className="flex items-center gap-8">
           <Link className="flex items-center gap-2 shrink-0" to="/">

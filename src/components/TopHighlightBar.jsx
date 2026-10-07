@@ -11,15 +11,14 @@ export default function TopHighlightBar() {
           : "bg-slate-100 text-slate-900"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-medium">
+      <div className="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-medium">
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-blue-600 text-white text-[11px] font-semibold tracking-wide">
             FLASH DEAL
           </span>
-          <span
-            className={isDarkMode ? "text-slate-300" : "text-slate-600"}
-          >
-            Mid-Season Essential Bundles up to 35% off. Complimentary global shipping over $75.
+          <span className={isDarkMode ? "text-slate-300" : "text-slate-600"}>
+            Mid-Season Essential Bundles up to 35% off. Complimentary global
+            shipping over $75.
           </span>
         </div>
         <div

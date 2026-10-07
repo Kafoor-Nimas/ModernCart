@@ -4,7 +4,7 @@ export default function ValuePropsSection() {
   const { isDarkMode } = useApp();
 
   return (
-    <section className="w-full px-6 py-12 max-w-7xl mx-auto">
+    <section className="w-full px-6 py-12 max-w-[1600px] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div
           className={`p-6 rounded-2xl border shadow-sm flex items-start gap-4 ${
@@ -31,7 +31,8 @@ export default function ValuePropsSection() {
               Authenticity Guaranteed
             </h4>
             <p className="text-xs text-slate-400">
-              Every product is sourced directly from authenticated master craftsmen and licensed brands.
+              Every product is sourced directly from authenticated master
+              craftsmen and licensed brands.
             </p>
           </div>
         </div>
@@ -61,7 +62,8 @@ export default function ValuePropsSection() {
               30-Day Hassle-Free Returns
             </h4>
             <p className="text-xs text-slate-400">
-              Not completely satisfied? Initiate a doorstep pickup return within thirty days for an instant refund.
+              Not completely satisfied? Initiate a doorstep pickup return within
+              thirty days for an instant refund.
             </p>
           </div>
         </div>
@@ -91,7 +93,8 @@ export default function ValuePropsSection() {
               24/7 Dedicated Concierge
             </h4>
             <p className="text-xs text-slate-400">
-              Our team of human product specialists is available day and night to answer specs and styling inquiries.
+              Our team of human product specialists is available day and night
+              to answer specs and styling inquiries.
             </p>
           </div>
         </div>

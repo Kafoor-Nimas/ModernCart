@@ -4,7 +4,7 @@ export default function HeroSection() {
   const { isDarkMode } = useApp();
 
   return (
-    <section className="w-full px-6 py-12 md:py-16 lg:py-20 max-w-7xl mx-auto">
+    <section className="w-full px-6 py-12 md:py-16 lg:py-20 max-w-[1600px] mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         {/* Left Column */}
         <div className="lg:col-span-7 flex flex-col items-start gap-6">

@@ -14,7 +14,7 @@ export default function Newsletter({ onSubscribe }) {
   };
 
   return (
-    <section className="w-full px-6 py-14 max-w-7xl mx-auto">
+    <section className="w-full px-6 py-14 max-w-[1600px] mx-auto">
       <div
         className={`w-full border rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col items-center text-center ${
           isDarkMode

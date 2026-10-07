@@ -20,7 +20,7 @@ export default function BestSellersSection({ bestSellers }) {
         isDarkMode ? "bg-slate-900/60" : "bg-slate-100"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex flex-col gap-8">
+      <div className="max-w-[1600px] mx-auto flex flex-col gap-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-red-600 font-semibold text-xs mb-1">
