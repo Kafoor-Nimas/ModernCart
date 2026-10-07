@@ -67,7 +67,7 @@ export default function ProductCard({ product }) {
         </div>
 
         <h3
-          className={`font-semibold text-base mt-1 line-clamp-1 ${
+          className={`font-semibold text-lg mt-1 line-clamp-1 ${
             isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
           }`}
         >
@@ -119,7 +119,7 @@ export default function ProductCard({ product }) {
           type="button"
           onClick={() => addToCart(product)}
         >
-          <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+          <span className="material-symbols-outlined " style={{ fontSize: "18px" }}>shopping_bag</span>
           <span>Add</span>
         </button>
       </div>
