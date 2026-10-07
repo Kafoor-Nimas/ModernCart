@@ -106,11 +106,11 @@ export default function BestSellersSection({ bestSellers }) {
                   </span>
                 </div>
 
-                <div className="text-xs" style={{ color: "#94A3B8" }}>
+                <div className="text-sm" style={{ color: "#94A3B8" }}>
                   {item.brand}
                 </div>
                 <h4
-                  className={`text-base font-semibold mt-1 truncate ${
+                  className={`text-lg font-semibold mt-1 truncate ${
                     isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
                   }`}
                 >
@@ -141,12 +141,12 @@ export default function BestSellersSection({ bestSellers }) {
                 className={`mt-4 pt-3 flex items-center justify-between px-3 py-2 rounded-xl ${
                   isDarkMode
                     ? "bg-[#111827] border border-[#334155]"
-                    : "bg-slate-50"
+                    : "bg-blue-50"
                 }`}
               >
                 <div>
                   <span
-                    className={`font-bold text-lg ${
+                    className={`font-bold text-xl ${
                       isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
                     }`}
                   >
@@ -154,7 +154,7 @@ export default function BestSellersSection({ bestSellers }) {
                   </span>
                   {item.originalPrice && (
                     <span
-                      className="line-through text-xs ml-1.5"
+                      className="line-through text-sm ml-1.5"
                       style={{ color: "#64748B" }}
                     >
                       ${item.originalPrice}
@@ -162,7 +162,7 @@ export default function BestSellersSection({ bestSellers }) {
                   )}
                 </div>
                 <button
-                  className="px-3 py-1.5 rounded-lg text-white text-xs font-semibold hover:brightness-110 transition-colors flex items-center gap-1 active:scale-95"
+                  className="px-3 py-1.5 rounded-lg text-white text-[16px] font-semibold hover:brightness-110 transition-colors flex items-center gap-1 active:scale-95"
                   style={{ backgroundColor: "#3B82F6" }}
                   type="button"
                   onClick={() => addToCart(item)}
