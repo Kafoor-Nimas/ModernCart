@@ -1,4 +1,5 @@
 import { useApp } from "../context/AppContext";
+import hero from "../assets/hero.jfif";
 
 export default function HeroSection() {
   const { isDarkMode } = useApp();
@@ -23,13 +24,13 @@ export default function HeroSection() {
           </div>
 
           <h1
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] max-w-2xl ${
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] max-w-4xl ${
               isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
             }`}
           >
             Discover products you’ll{" "}
             <span
-              className="underline decoration-wavy decoration-2 underline-offset-8"
+              className="underline decoration-wavy decoration-3 underline-offset-8"
               style={{
                 color: isDarkMode ? "#60A5FA" : "#2563EB",
                 textDecorationColor: isDarkMode ? "rgba(96, 165, 250, 0.4)" : "#BFDBFE",
@@ -134,7 +135,7 @@ export default function HeroSection() {
               <img
                 alt="Studio One ANC Wireless Headphones"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeEkiBHP-gpnEPkjwiuFeBjYbuO4DZJb7oYtkCYN9fq6Z5g692SAISA1kVXwWfMxIPZhLjwsz8R7nrE8itb5o9FIuLlwwWWzumnJHTZM9Qj1XrXLp247rKFimB_jp7tkte9PzXzlCTGYQ2P2vh_L0EaY-f8g2-z_uaEfQ1vvSQLvdADFJDenYd0CSA3TYFDRVBoBpiNvpxfRniUMD0BkwauEfhD55IbJbSf3kjoaPNtHtiC-C5gp9s"
+                src={hero}
               />
               <div
                 className={`absolute top-4 left-4 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5 ${
@@ -165,15 +166,15 @@ export default function HeroSection() {
                 }`}
               >
                 <div>
-                  <span className="block text-xs" style={{ color: "#94A3B8" }}>
+                  <span className="block text-sm" style={{ color: "#94A3B8" }}>
                     AuraSound Flagship
                   </span>
-                  <span className={`text-base font-bold ${isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"}`}>
+                  <span className={`text-lg font-bold ${isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"}`}>
                     Studio One ANC
                   </span>
                 </div>
                 <span
-                  className="text-xl font-bold"
+                  className="text-2xl font-bold"
                   style={{ color: isDarkMode ? "#60A5FA" : "#2563EB" }}
                 >
                   $249
@@ -184,7 +185,7 @@ export default function HeroSection() {
             <div className="grid grid-cols-2 gap-3">
               <div
                 className={`flex items-center gap-3 p-3.5 rounded-xl ${
-                  isDarkMode ? "bg-[#111827] border border-[#334155]" : "bg-slate-50"
+                  isDarkMode ? "bg-[#111827] border border-[#334155]" : "bg-blue-50"
                 }`}
               >
                 <div
@@ -211,7 +212,7 @@ export default function HeroSection() {
 
               <div
                 className={`flex items-center gap-3 p-3.5 rounded-xl ${
-                  isDarkMode ? "bg-[#111827] border border-[#334155]" : "bg-slate-50"
+                  isDarkMode ? "bg-[#111827] border border-[#334155]" : "bg-blue-50"
                 }`}
               >
                 <div
