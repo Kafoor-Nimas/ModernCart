@@ -1,4 +1,6 @@
 import { useApp } from "../context/AppContext";
+import promo from "../assets/promo.jfif";
+
 
 export default function PromoBanner() {
   const { isDarkMode } = useApp();
@@ -12,13 +14,14 @@ export default function PromoBanner() {
             : "bg-blue-50 border border-blue-100 text-slate-900"
         }`}
       >
-        {/* Dynamic Gradient Overlay */}
+        
+       {/* Dynamic Gradient Overlay */}
         <div
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
             background: isDarkMode
               ? "linear-gradient(to right, #1E293B 0%, rgba(30, 41, 59, 0.95) 45%, rgba(30, 41, 59, 0.2) 100%)"
-              : "linear-gradient(to right, #EFF6FF 0%, rgba(239, 246, 255, 0.95) 45%, rgba(239, 246, 255, 0.2) 100%)",
+              : "linear-gradient(to right, #e5eeff 0%, rgba(229, 238, 255, 0.90) 45%, rgba(229, 238, 255, 0) 100%)",
           }}
         ></div>
 
@@ -35,7 +38,7 @@ export default function PromoBanner() {
           </span>
 
           <h2
-            className={`text-3xl sm:text-4xl font-bold leading-tight tracking-tight ${
+            className={`text-3xl sm:text-5xl font-bold leading-tight tracking-tight ${
               isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
             }`}
           >
@@ -66,7 +69,7 @@ export default function PromoBanner() {
                 arrow_outward
               </span>
             </a>
-            <span className="text-xs" style={{ color: "#94A3B8" }}>
+            <span className="text-sm" style={{ color: "#94A3B8" }}>
               Limited allocation available
             </span>
           </div>
@@ -76,7 +79,7 @@ export default function PromoBanner() {
           className="absolute right-0 top-0 bottom-0 w-full md:w-3/5 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwmmjuymYZSrCkw7xcpEfeYRx51jVd4-XGJySKyKufasQ99xHHHu34wFjszw6c4xJeGtjtYU8cFtPacyXGltQX6yyZbutmelRHGH3aL8rO5B1SHp1_n4fE6HdlFMBwNtuQVNQDOa8AkSRdCQeb3G9luKmWvgeNRngGnEE_nseJuAy0jcnmM20vmCA24J_aaVCDx5ma_9v23xtdRsDJWNXSYDukvZZFCFXQCFcsNdAMbZOKmLucJipH')",
+              `url(${promo})`,
           }}
         ></div>
       </div>
