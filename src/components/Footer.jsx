@@ -4,6 +4,10 @@ import { useApp } from "../context/AppContext";
 export default function Footer() {
   const { isDarkMode } = useApp();
 
+  const linkClass = `transition-colors ${
+    isDarkMode ? "hover:text-white" : "hover:text-slate-900"
+  }`;
+
   return (
     <footer
       className={`w-full border-t transition-colors ${
@@ -23,10 +27,10 @@ export default function Footer() {
               Company
             </h4>
             <ul className="flex flex-col gap-2 text-sm" style={{ color: isDarkMode ? "#94A3B8" : "#64748B" }}>
-              <li><Link className="hover:text-white transition-colors" to="/about">About Us</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/careers">Careers</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/press">Press</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/sustainability">Sustainability</Link></li>
+              <li><Link className={linkClass} to="/about">About Us</Link></li>
+              <li><Link className={linkClass} to="/careers">Careers</Link></li>
+              <li><Link className={linkClass} to="/press">Press</Link></li>
+              <li><Link className={linkClass} to="/sustainability">Sustainability</Link></li>
             </ul>
           </div>
 
@@ -39,10 +43,10 @@ export default function Footer() {
               Customer Service
             </h4>
             <ul className="flex flex-col gap-2 text-sm" style={{ color: isDarkMode ? "#94A3B8" : "#64748B" }}>
-              <li><Link className="hover:text-white transition-colors" to="/help">Help Center</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/track">Track Order</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/shipping">Shipping & Delivery</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/returns">Returns & Refunds</Link></li>
+              <li><Link className={linkClass} to="/help">Help Center</Link></li>
+              <li><Link className={linkClass} to="/track">Track Order</Link></li>
+              <li><Link className={linkClass} to="/shipping">Shipping & Delivery</Link></li>
+              <li><Link className={linkClass} to="/returns">Returns & Refunds</Link></li>
             </ul>
           </div>
 
@@ -55,9 +59,10 @@ export default function Footer() {
               Shop & Explore
             </h4>
             <ul className="flex flex-col gap-2 text-sm" style={{ color: isDarkMode ? "#94A3B8" : "#64748B" }}>
-              <li><Link className="hover:text-white transition-colors" to="/category/electronics">Electronics</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/category/home">Minimalist Home</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/category/fashion">Lifestyle & Fashion</Link></li>
+              <li><Link className={linkClass} to="/category/electronics">Electronics</Link></li>
+              <li><Link className={linkClass} to="/category/home">Minimalist Home</Link></li>
+              <li><Link className={linkClass} to="/category/fashion">Lifestyle & Fashion</Link></li>
+              <li><Link className={linkClass} to="/category/beauty">Beauty & Care</Link></li>
             </ul>
           </div>
 
@@ -70,9 +75,10 @@ export default function Footer() {
               Legal & Trust
             </h4>
             <ul className="flex flex-col gap-2 text-sm" style={{ color: isDarkMode ? "#94A3B8" : "#64748B" }}>
-              <li><Link className="hover:text-white transition-colors" to="/privacy">Privacy Policy</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/terms">Terms of Service</Link></li>
-              <li><Link className="hover:text-white transition-colors" to="/cookies">Cookie Preferences</Link></li>
+              <li><Link className={linkClass} to="/privacy">Privacy Policy</Link></li>
+              <li><Link className={linkClass} to="/terms">Terms of Service</Link></li>
+              <li><Link className={linkClass} to="/cookies">Cookie Preferences</Link></li>
+              <li><Link className={linkClass} to="/accessibility">Accessibility</Link></li>
             </ul>
           </div>
         </div>

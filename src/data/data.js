@@ -1,3 +1,7 @@
+import hydrator from "../assets/hydrator.jfif"
+import monitor from "../assets/monitor.jfif"
+import keyboard from "../assets/keyboard.jfif"
+
 export const BEST_SELLERS = [
   {
     id: "bs-1",
@@ -118,7 +122,7 @@ export const FEATURED_PRODUCTS = [
     rating: 4.9,
     reviewsCount: 512,
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCQqXyWdlQN1-i_tuG_W4nwqFlpu5Gy0CVfxR9RguZhcWNqfAJAPGAa3DVRvNXLO9pOZ54NGVh-e9NDlYeeqyu45AeN-GnThJDwuNq7b1km38p24bLFkZMQBDG2VuA_vv5CHlvfyw2_qWgdGHyFniubydAahBxPQAzYzP14znqZdrb0n51xW1DROQUZd7c-KsXgbJuiuUCfRV2N-62e8JMIbkkeA3NlkKhR51ZxTI_EqaSp2ucdvjlP",
+      monitor,
   },
   {
     id: "fp-6",
@@ -132,7 +136,7 @@ export const FEATURED_PRODUCTS = [
     rating: 4.8,
     reviewsCount: 215,
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuANqo8_uos-w5s4XorvSydBvMVeZPfme-BVU61F5kgpR1x2Hk5ytbO1ePNl9NZGE6EYg5puRz3Lch7UKBW4gZT9i6Itr1SvV1CuYuRAnr5OMNpGDs4pU0iwPUXNLxO3Eh8srznHIU4hoppWKmpBZ9IrJdEUqekKBS8o3a-qKgh6jC_FEfRZhJQxjxDkXmQ7RKQ9J9TdXEbX8z4xJm6T5tUh08N9BuXeYvZCa95cBmY4q-DRzUTCKg-W",
+      hydrator,
   },
   {
     id: "fp-7",
@@ -146,7 +150,7 @@ export const FEATURED_PRODUCTS = [
     rating: 4.9,
     reviewsCount: 430,
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCujxqTLRvo6WwVNZeXP2-_2qIxuIgUaja8cLdnhCYVp5zMZ1GOuAheKnL95zZVkG2Q4FhsvCOS3Y95a_ZS2DcfSMMek3dje6hVE-tjmjliA9C4agb8nR7A3Kqjt3iU-R0wfbq-zgcweSgsEtadZ8h0KhxPb8IKy_rz-0dpxJA--CYIzFI5F4DoqzbWKcC3cPxyPR-6gTVbqkO4dDHZoG0ebP7ZoVKiH0sWot1rVVdN7y_GVsmMKmD2",
+      keyboard,
   },
   {
     id: "fp-8",
