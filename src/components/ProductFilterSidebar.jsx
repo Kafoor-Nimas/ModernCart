@@ -1,7 +1,39 @@
 import { useApp } from "../context/AppContext";
 
-export default function ProductFilterSidebar() {
+export default function ProductFilterSidebar({
+  selectedCategories = [],
+  setSelectedCategories = () => {},
+  minPrice = 0,
+  setMinPrice = () => {},
+  maxPrice = 500,
+  setMaxPrice = () => {},
+  ratingFilter = 0,
+  setRatingFilter = () => {},
+  inStockOnly = false,
+  setInStockOnly = () => {},
+  onSaleOnly = false,
+  setOnSaleOnly = () => {},
+  selectedBrands = [], 
+  setSelectedBrands = () => {},
+  resetFilters = () => {},
+}) {
   const { isDarkMode } = useApp();
+
+  const handleCategoryToggle = (catName) => {
+    setSelectedCategories((prev) =>
+      prev.includes(catName)
+        ? prev.filter((c) => c !== catName)
+        : [...prev, catName]
+    );
+  };
+
+  const handleBrandToggle = (brandName) => {
+    setSelectedBrands((prev) =>
+      prev.includes(brandName)
+        ? prev.filter((b) => b !== brandName)
+        : [...prev, brandName]
+    );
+  };
 
   return (
     <aside
@@ -33,6 +65,7 @@ export default function ProductFilterSidebar() {
             isDarkMode ? "text-[#38BDF8]" : "text-blue-600"
           }`}
           type="button"
+          onClick={resetFilters}
         >
           Reset
         </button>
@@ -49,51 +82,55 @@ export default function ProductFilterSidebar() {
         </span>
         <div className="flex flex-col gap-2.5 text-xs">
           {[
-            { name: "Electronics", count: 42, checked: true },
-            { name: "Fashion", count: 58, checked: false },
-            { name: "Beauty", count: 24, checked: false },
-            { name: "Home & Living", count: 35, checked: false },
-            { name: "Accessories", count: 18, checked: false },
-          ].map((cat) => (
-            <label
-              key={cat.name}
-              className="flex items-center justify-between cursor-pointer group"
-            >
-              <span className="flex items-center gap-2.5">
-                <input
-                  defaultChecked={cat.checked}
-                  className={`w-4 h-4 rounded cursor-pointer ${
-                    isDarkMode
-                      ? "bg-[#1E293B] border-[#334155] accent-blue-500"
-                      : "bg-slate-100 border-slate-300 accent-blue-600"
-                  }`}
-                  type="checkbox"
-                />
+            { name: "Electronics", count: 42 },
+            { name: "Fashion", count: 58 },
+            { name: "Beauty", count: 24 },
+            { name: "Home & Living", count: 35 },
+            { name: "Accessories", count: 18 },
+          ].map((cat) => {
+            const checked = selectedCategories.includes(cat.name);
+            return (
+              <label
+                key={cat.name}
+                className="flex items-center justify-between cursor-pointer group"
+              >
+                <span className="flex items-center gap-2.5">
+                  <input
+                    checked={checked}
+                    className={`w-4 h-4 rounded cursor-pointer ${
+                      isDarkMode
+                        ? "bg-[#1E293B] border-[#334155] accent-blue-500"
+                        : "bg-slate-100 border-slate-300 accent-blue-600"
+                    }`}
+                    type="checkbox"
+                    onChange={() => handleCategoryToggle(cat.name)}
+                  />
+                  <span
+                    className={`group-hover:text-white transition-colors ${
+                      checked
+                        ? isDarkMode
+                          ? "text-[#F8FAFC] font-medium"
+                          : "text-slate-900 font-medium"
+                        : isDarkMode
+                        ? "text-[#CBD5E1]"
+                        : "text-slate-600"
+                    }`}
+                  >
+                    {cat.name}
+                  </span>
+                </span>
                 <span
-                  className={`group-hover:text-white transition-colors ${
-                    cat.checked
-                      ? isDarkMode
-                        ? "text-[#F8FAFC] font-medium"
-                        : "text-slate-900 font-medium"
-                      : isDarkMode
-                      ? "text-[#CBD5E1]"
-                      : "text-slate-600"
+                  className={`text-[11px] px-1.5 py-0.5 rounded border ${
+                    isDarkMode
+                      ? "text-[#94A3B8] bg-[#1E293B] border-[#334155]"
+                      : "text-slate-400 bg-slate-100 border-slate-200"
                   }`}
                 >
-                  {cat.name}
+                  {cat.count}
                 </span>
-              </span>
-              <span
-                className={`text-[11px] px-1.5 py-0.5 rounded border ${
-                  isDarkMode
-                    ? "text-[#94A3B8] bg-[#1E293B] border-[#334155]"
-                    : "text-slate-400 bg-slate-100 border-slate-200"
-                }`}
-              >
-                {cat.count}
-              </span>
-            </label>
-          ))}
+              </label>
+            );
+          })}
         </div>
       </div>
 
@@ -112,11 +149,11 @@ export default function ProductFilterSidebar() {
               isDarkMode ? "text-[#38BDF8]" : "text-blue-600"
             }`}
           >
-            $0 - $500
+            ${minPrice} -${maxPrice}
           </span>
         </div>
 
-        {/* Range Slider Track Graphic */}
+        {/* Range Slider Visual Track */}
         <div className="relative w-full py-2">
           <div
             className={`w-full h-1.5 rounded-full relative overflow-hidden ${
@@ -124,8 +161,11 @@ export default function ProductFilterSidebar() {
             }`}
           >
             <div
-              className="absolute left-0 top-0 h-full w-1/2 rounded-full"
-              style={{ backgroundColor: "#3B82F6" }}
+              className="absolute left-0 top-0 h-full rounded-full"
+              style={{
+                width: `${Math.min(100, Math.max(0, (maxPrice / 500) * 100))}%`,
+                backgroundColor: "#3B82F6",
+              }}
             ></div>
           </div>
           <div className="flex justify-between items-center -mt-2">
@@ -162,9 +202,10 @@ export default function ProductFilterSidebar() {
             >
               <span>$</span>
               <input
-                defaultValue={0}
                 className="w-full bg-transparent pl-0.5 focus:outline-none"
                 type="number"
+                value={minPrice}
+                onChange={(e) => setMinPrice(Number(e.target.value) || 0)}
               />
             </div>
           </div>
@@ -190,9 +231,10 @@ export default function ProductFilterSidebar() {
             >
               <span>$</span>
               <input
-                defaultValue={500}
                 className="w-full bg-transparent pl-0.5 focus:outline-none"
                 type="number"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(Number(e.target.value) || 0)}
               />
             </div>
           </div>
@@ -212,10 +254,11 @@ export default function ProductFilterSidebar() {
           <label className="flex items-center justify-between cursor-pointer group">
             <div className="flex items-center gap-2">
               <input
-                defaultChecked
+                checked={ratingFilter === 4}
                 className="w-4 h-4 accent-blue-500 cursor-pointer"
                 name="rating-filter"
                 type="radio"
+                onChange={() => setRatingFilter(ratingFilter === 4 ? 0 : 4)}
               />
               <div className="flex items-center text-[#FBBF24]">
                 {[1, 2, 3, 4].map((star) => (
@@ -247,6 +290,49 @@ export default function ProductFilterSidebar() {
               84
             </span>
           </label>
+
+          <label className="flex items-center justify-between cursor-pointer group">
+            <div className="flex items-center gap-2">
+              <input
+                checked={ratingFilter === 3}
+                className="w-4 h-4 accent-blue-500 cursor-pointer"
+                name="rating-filter"
+                type="radio"
+                onChange={() => setRatingFilter(ratingFilter === 3 ? 0 : 3)}
+              />
+              <div className="flex items-center text-[#FBBF24]">
+                {[1, 2, 3].map((star) => (
+                  <span
+                    key={star}
+                    className="material-symbols-outlined text-[16px]"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    star
+                  </span>
+                ))}
+                {[1, 2].map((star) => (
+                  <span
+                    key={star}
+                    className="material-symbols-outlined text-[16px]"
+                    style={{
+                      color: isDarkMode ? "#475569" : "#CBD5E1",
+                      fontVariationSettings: "'FILL' 1",
+                    }}
+                  >
+                    star
+                  </span>
+                ))}
+              </div>
+              <span
+                className={isDarkMode ? "text-[#94A3B8]" : "text-slate-600"}
+              >
+                & Up
+              </span>
+            </div>
+            <span className={isDarkMode ? "text-[#94A3B8]" : "text-slate-400"}>
+              120
+            </span>
+          </label>
         </div>
       </div>
 
@@ -269,7 +355,12 @@ export default function ProductFilterSidebar() {
               In Stock only
             </span>
             <div className="relative inline-flex items-center cursor-pointer">
-              <input defaultChecked className="sr-only peer" type="checkbox" />
+              <input
+                checked={inStockOnly}
+                className="sr-only peer"
+                type="checkbox"
+                onChange={(e) => setInStockOnly(e.target.checked)}
+              />
               <div
                 className={`w-10 h-6 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${
                   isDarkMode
@@ -279,6 +370,81 @@ export default function ProductFilterSidebar() {
               ></div>
             </div>
           </label>
+
+          <label className="flex items-center gap-2.5 cursor-pointer">
+            <input
+              checked={onSaleOnly}
+              className={`w-4 h-4 rounded cursor-pointer ${
+                isDarkMode
+                  ? "bg-[#1E293B] border-[#334155] accent-blue-500"
+                  : "bg-slate-100 border-slate-300 accent-blue-600"
+              }`}
+              type="checkbox"
+              onChange={(e) => setOnSaleOnly(e.target.checked)}
+            />
+            <span className={isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"}>
+              On Sale / Discounted
+            </span>
+          </label>
+        </div>
+      </div>
+
+      {/* Brand Filter */}
+      <div className="flex flex-col gap-3">
+        <span
+          className={`text-xs uppercase tracking-wider font-semibold ${
+            isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
+          }`}
+        >
+          Brand
+        </span>
+        <div className="flex flex-col gap-2 text-xs">
+          {[
+            { name: "AuraSound", count: 14 },
+            { name: "Lumixel", count: 9 },
+            { name: "Kanso", count: 11 },
+            { name: "Forma", count: 8 },
+            { name: "KeyCraft", count: 6 },
+          ].map((brand) => {
+            const checked = selectedBrands.includes(brand.name);
+            return (
+              <label
+                key={brand.name}
+                className="flex items-center justify-between cursor-pointer group"
+              >
+                <span className="flex items-center gap-2">
+                  <input
+                    checked={checked}
+                    className={`w-4 h-4 rounded cursor-pointer ${
+                      isDarkMode
+                        ? "bg-[#1E293B] border-[#334155] accent-blue-500"
+                        : "bg-slate-100 border-slate-300 accent-blue-600"
+                    }`}
+                    type="checkbox"
+                    onChange={() => handleBrandToggle(brand.name)}
+                  />
+                  <span
+                    className={`font-medium ${
+                      checked
+                        ? isDarkMode
+                          ? "text-[#F8FAFC]"
+                          : "text-slate-900"
+                        : isDarkMode
+                        ? "text-[#CBD5E1] group-hover:text-white"
+                        : "text-slate-600 group-hover:text-slate-900"
+                    }`}
+                  >
+                    {brand.name}
+                  </span>
+                </span>
+                <span
+                  className={isDarkMode ? "text-[#94A3B8]" : "text-slate-400"}
+                >
+                  {brand.count}
+                </span>
+              </label>
+            );
+          })}
         </div>
       </div>
 
@@ -298,6 +464,7 @@ export default function ProductFilterSidebar() {
               : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"
           }`}
           type="button"
+          onClick={resetFilters}
         >
           Reset All Filters
         </button>

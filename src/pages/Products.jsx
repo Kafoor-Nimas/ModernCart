@@ -1,144 +1,128 @@
-import  { useState } from "react";
+import  { useState, useMemo } from "react";
 import { useApp } from "../context/AppContext";
 import ProductCatalogCard from "../components/ProductCatalogCard";
 import ProductFilterSidebar from "../components/ProductFilterSidebar";
-
-const PRODUCTS_DATA = [
-  {
-    id: "p1",
-    title: "Studio One ANC",
-    brand: "AuraSound",
-    price: "189.00",
-    originalPrice: "239.00",
-    discountBadge: "-20%",
-    rating: "4.9",
-    reviewsCount: "340",
-    stockStatus: "In Stock",
-    category: "Electronics",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCNxixyRR7xU9vPaLjBuyBha1nJOJCyjWwjXof2rIdB6fe87un-eaMYgCdq-d7M6pVKGe8q5xUzfxZAh9hhLWTLqG_8LIk4O1ELveyEPfyo1PArF28lHOwmh1PYrSPuDBWd_GuizBSCYmAy0NWCYw9VzgyyLPeOeP-9K3eemJRpiYim5gdpbkNB-pYV7JhKPz86kiAsd7s5PFofeZhhJR7U1PvzSR3YrEhfivE1h8qPd2GEhapEZ7_O",
-  },
-  {
-    id: "p2",
-    title: "Lumen Arc Desk Task",
-    brand: "Lumixel",
-    price: "125.00",
-    originalPrice: "149.00",
-    discountBadge: "-15%",
-    rating: "4.8",
-    reviewsCount: "128",
-    stockStatus: "In Stock",
-    category: "Electronics",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAlIqxV6RalkMCgEnyXY-92dfIQWO3UlECAhy9Cjdwe2-H97rl-DxfcHRJZ3yALQma6kzuuzW-v1iRFhUiMSx0Ld7AdDnYjyNtuc_J_6_eGAKlrDPYpYH94AOfvAZPrzE-u-_QzcV3W1wcfPRTivPw3ycIvBZW4wBL4pTB_O0fHyqASp3IvjID99l-CT54zwXZHsC8C-VUK-59KDbKosHcmARYs0FSSwa0V4Fs3PVNo_BDwqBAAkT8U",
-  },
-  {
-    id: "p3",
-    title: "Tactile 75 Artisan",
-    brand: "KeyCraft",
-    price: "168.00",
-    originalPrice: "240.00",
-    discountBadge: "-30%",
-    rating: "5.0",
-    reviewsCount: "89",
-    stockStatus: "Low Stock - 3 left",
-    category: "Electronics",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCbqffo5jeHx-VklAn6ugDaka6GqGUEzu_8ERHZJUvRJKxLrm2X7Z8ot7rG15ll1FdXE3O_8yE5wxayOv5STDvq7BOc7NJlPj7sNXbtUbMp7smlfD2E5QBXd_t1_tCWoCCxkrZN3DjU-dsJg5T8zqzuU5hFJzkdUzAZVU-Sod5Z-CArm1F_zUh1HHN_9U8PVKQLP-suQ92SvgYp9D8gIje4gogbemGilOgLHjRRhVkapuUCL7M8ABG5",
-  },
-  {
-    id: "p4",
-    title: "Artisan Dripper Set",
-    brand: "Kanso",
-    price: "78.00",
-    originalPrice: null,
-    discountBadge: null,
-    rating: "4.7",
-    reviewsCount: "64",
-    stockStatus: "In Stock",
-    category: "Home & Living",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD_7YZl2S5ARae3o8uNLCxkSsvqYPfMSgEuBpCIO9mgrFkicAUxEGhbBe0fUu_gbkGIX-obbUmGL4UP7ycLj9I2MJbGFpxYnWw4zOWUqtsD_BKMspXBDsn2AqtAaukngoK_qz8TgHKhyXZx8QzyjUDsXvlCiw6GYjXYWREx6Rg4nrnkk-MnUSmVRby4K15YUt2oqcb50pHJk-3ALwOgv7mXWsEjoFMcGgYNfCCsY12TEHOylP079h7m",
-  },
-  {
-    id: "p5",
-    title: "Chronos Pulse Elite",
-    brand: "Forma",
-    price: "245.00",
-    originalPrice: "325.00",
-    discountBadge: "-25%",
-    rating: "4.9",
-    reviewsCount: "210",
-    stockStatus: "In Stock",
-    category: "Accessories",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBpDGlCv0_IMPbuNFjdfY_H-aol5oIxyxpcOxZeA2DRPKo0weXgtRutAVYt97VAFtx4bPcnT9_Ven50DZyxGZg1c0AAnDMgtYqcAjgnHCx53D7Q-791zCnAl6i_z6k5Q00gB60gi0l_1qxMqFdhkaXpTUTRMOa-HZ1c1mJpKf-JGj3HEuqsR7-zv8_q6qbCrz6IYkz98op7dYBpIq4aAGwcncM0qYHh0FKWY7-mCgNyJiFngbOe7QGe",
-  },
-  {
-    id: "p6",
-    title: "Terra Curved Vases",
-    brand: "Kanso",
-    price: "92.00",
-    originalPrice: null,
-    discountBadge: null,
-    rating: "4.6",
-    reviewsCount: "45",
-    stockStatus: "In Stock",
-    category: "Home & Living",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMx7KiwTP-Nvu0nZn4A-2GXpIfJOxY-AMw4c9Q1RT9ehwPH7rLQMWKs0z_we7g9HYu5iNvItkppab1jREI2-YG7lhsLCcxk6QSG1P67e41nSDlSHhBBi035ST9DK6f3yvvLuX2XixOUI7R5fnlm-HB9ca_6BmCbXTKLEKqbO-_7AUct1KFqTS7WPgM6SDIETwPIkPCxdE050ptaKvp-F34esS-se412oAnfR804qLb2LaarfFV0Xmk",
-  },
-  {
-    id: "p7",
-    title: "Slate MagPower Dock",
-    brand: "AuraSound",
-    price: "79.00",
-    originalPrice: "89.00",
-    discountBadge: "-10%",
-    rating: "4.8",
-    reviewsCount: "182",
-    stockStatus: "Low Stock - 5 left",
-    category: "Electronics",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRJWgZFB3oMqSeMATffMCHlf-3g2cI-iQlqi3ZnhwUWjrkyTkJ5FYytZj6Dob1lFkdsTtnBRD52z8sUaoUx62XtQtI5i1h4KqpF_tDGWdR3oE1V3HsLe2zv2xCjUHWUAqAGIKDxtK_T39uzdzXVn3OuFFJbY7IVWTdsXNzFPjzN6y5yx_MMxjeuXaNaiO4HkQ_VhesC9MtavSuc3aUSJbtl8thet-Jy_x2cISwWCGpCY0oo-Dnj-Nx",
-  },
-  {
-    id: "p8",
-    title: "Aura Pods True Wireless",
-    brand: "AuraSound",
-    price: "149.00",
-    originalPrice: "189.00",
-    discountBadge: "-20%",
-    rating: "4.9",
-    reviewsCount: "512",
-    stockStatus: "In Stock",
-    category: "Electronics",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDAsnD9FFxexp85bObfry9k5-_Ul2AHclvbzqviJh00EI0F_MSVKzfDD7tfcJJq1fkoapW58xqYom5Aw4oAsbfI3IpgF_mfhu-fGYdONxj9LGwLM4pgvkReRSq3gi1SDoHjRUmqxf5BPDjhr-4Jl35hCitUaDyEY6MHtv5L5cbiU30aexjcJpXjNkh5wsR6H_Tz_mkIbY00WteV0tunasSDl_uuEpiSkP3B5WPRZtEQnONBQl3JEVj-",
-  },
-];
+import { PRODUCTS_DATA } from "../data/data";
 
 export default function Products() {
   const { isDarkMode } = useApp();
   const [viewMode, setViewMode] = useState("grid"); // 'grid' | 'list'
   const [sortOption, setSortOption] = useState("featured");
-  const [activeFilters, setActiveFilters] = useState([
-    "Electronics",
-    "Under $200",
-    "4★ & Above",
+
+  // Interactive Filter States
+  const [selectedCategories, setSelectedCategories] = useState(["Electronics"]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(200);
+  const [ratingFilter, setRatingFilter] = useState(4);
+  const [inStockOnly, setInStockOnly] = useState(false);
+  const [onSaleOnly, setOnSaleOnly] = useState(false);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+
+  // Filter Reset Handler
+  const resetFilters = () => {
+    setSelectedCategories([]);
+    setMinPrice(0);
+    setMaxPrice(500);
+    setRatingFilter(0);
+    setInStockOnly(false);
+    setOnSaleOnly(false);
+    setSelectedBrands([]);
+  };
+
+  // Compute Active Filter Pills for Header
+  const activeFiltersPills = useMemo(() => {
+    const pills = [...selectedCategories];
+    if (maxPrice < 500 || minPrice > 0) pills.push(`$${minPrice} - $${maxPrice}`);
+    if (ratingFilter > 0) pills.push(`${ratingFilter}★ & Above`);
+    if (inStockOnly) pills.push("In Stock");
+    if (onSaleOnly) pills.push("On Sale");
+    return [...pills, ...selectedBrands];
+  }, [selectedCategories, minPrice, maxPrice, ratingFilter, inStockOnly, onSaleOnly, selectedBrands]);
+
+  const removeFilterPill = (pill) => {
+    if (selectedCategories.includes(pill)) {
+      setSelectedCategories(selectedCategories.filter((c) => c !== pill));
+    } else if (selectedBrands.includes(pill)) {
+      setSelectedBrands(selectedBrands.filter((b) => b !== pill));
+    } else if (pill.includes("★")) {
+      setRatingFilter(0);
+    } else if (pill.includes("$")) {
+      setMinPrice(0);
+      setMaxPrice(500);
+    } else if (pill === "In Stock") {
+      setInStockOnly(false);
+    } else if (pill === "On Sale") {
+      setOnSaleOnly(false);
+    }
+  };
+
+  // Perform Real-Time Filtering & Sorting
+  const filteredAndSortedProducts = useMemo(() => {
+    return PRODUCTS_DATA.filter((product) => {
+      // Category Filter
+      if (
+        selectedCategories.length > 0 &&
+        !selectedCategories.includes(product.category)
+      ) {
+        return false;
+      }
+
+      // Brand Filter
+      if (
+        selectedBrands.length > 0 &&
+        !selectedBrands.includes(product.brand)
+      ) {
+        return false;
+      }
+
+      // Price Filter
+      const priceNum = parseFloat(product.price);
+      if (priceNum < minPrice || priceNum > maxPrice) {
+        return false;
+      }
+
+      // Rating Filter
+      if (ratingFilter > 0 && parseFloat(product.rating) < ratingFilter) {
+        return false;
+      }
+
+      // Stock Filter
+      if (inStockOnly && !product.stockStatus.includes("In Stock")) {
+        return false;
+      }
+
+      // On Sale Filter
+      if (onSaleOnly && !product.discountBadge) {
+        return false;
+      }
+
+      return true;
+    }).sort((a, b) => {
+      if (sortOption === "price-asc") {
+        return parseFloat(a.price) - parseFloat(b.price);
+      }
+      if (sortOption === "price-desc") {
+        return parseFloat(b.price) - parseFloat(a.price);
+      }
+      if (sortOption === "rating") {
+        return parseFloat(b.rating) - parseFloat(a.rating);
+      }
+      return 0; // Default (Featured)
+    });
+  }, [
+    selectedCategories,
+    selectedBrands,
+    minPrice,
+    maxPrice,
+    ratingFilter,
+    inStockOnly,
+    onSaleOnly,
+    sortOption,
   ]);
-
-  const removeFilter = (filterToRemove) => {
-    setActiveFilters((prev) => prev.filter((f) => f !== filterToRemove));
-  };
-
-  const clearAllFilters = () => {
-    setActiveFilters([]);
-  };
 
   return (
     <div
-      className={`w-full transition-colors ${
+      className={`w-full mt-18 transition-colors ${
         isDarkMode ? "bg-[#0F172A] text-[#F8FAFC]" : "bg-slate-50 text-slate-900"
       }`}
     >
@@ -150,7 +134,7 @@ export default function Products() {
             : "bg-white border-b border-slate-200"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex flex-col gap-4">
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-4">
           {/* Breadcrumbs */}
           <nav
             className={`flex items-center gap-1.5 text-xs ${
@@ -207,7 +191,7 @@ export default function Products() {
                 Curated Catalog
               </span>
               <h1
-                className={`text-3xl font-bold tracking-tight ${
+                className={`text-4xl font-bold tracking-tight ${
                   isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
                 }`}
               >
@@ -254,9 +238,9 @@ export default function Products() {
                     isDarkMode ? "text-[#F8FAFC]" : "text-slate-900"
                   }`}
                 >
-                  24
+                  {filteredAndSortedProducts.length}
                 </span>{" "}
-                of 148 products
+                of {PRODUCTS_DATA.length} products
               </span>
 
               <div
@@ -337,7 +321,6 @@ export default function Products() {
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
                   <option value="rating">Highest Rated</option>
-                  <option value="newest">Newest Arrivals</option>
                 </select>
                 <span
                   className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[18px]"
@@ -350,7 +333,7 @@ export default function Products() {
           </div>
 
           {/* Active Filter Pills */}
-          {activeFilters.length > 0 && (
+          {activeFiltersPills.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap pt-1">
               <span
                 className={`text-xs uppercase tracking-wider mr-1 ${
@@ -360,7 +343,7 @@ export default function Products() {
                 Active filters:
               </span>
 
-              {activeFilters.map((filter) => (
+              {activeFiltersPills.map((filter) => (
                 <button
                   key={filter}
                   className={`group flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-colors border ${
@@ -369,7 +352,7 @@ export default function Products() {
                       : "bg-blue-50 border-blue-100 text-blue-800 hover:bg-blue-100"
                   }`}
                   type="button"
-                  onClick={() => removeFilter(filter)}
+                  onClick={() => removeFilterPill(filter)}
                 >
                   <span>{filter}</span>
                   <span
@@ -391,7 +374,7 @@ export default function Products() {
                     : "text-blue-600 hover:text-blue-800"
                 }`}
                 type="button"
-                onClick={clearAllFilters}
+                onClick={resetFilters}
               >
                 Clear All
               </button>
@@ -401,29 +384,57 @@ export default function Products() {
       </section>
 
       {/* Main Grid Content Area */}
-      <div className="max-w-7xl mx-auto w-full px-6 py-8">
+      <div className="max-w-[1700px] mx-auto w-full px-6 py-8">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Sidebar Filters */}
-          <ProductFilterSidebar />
+          <ProductFilterSidebar
+            inStockOnly={inStockOnly}
+            maxPrice={maxPrice}
+            minPrice={minPrice}
+            onSaleOnly={onSaleOnly}
+            ratingFilter={ratingFilter}
+            resetFilters={resetFilters}
+            selectedBrands={selectedBrands}
+            selectedCategories={selectedCategories}
+            setInStockOnly={setInStockOnly}
+            setMaxPrice={setMaxPrice}
+            setMinPrice={setMinPrice}
+            setOnSaleOnly={setOnSaleOnly}
+            setRatingFilter={setRatingFilter}
+            setSelectedBrands={setSelectedBrands}
+            setSelectedCategories={setSelectedCategories}
+          />
 
           {/* Product Listing Main Container */}
           <main className="flex-1 w-full min-w-0">
-            <div
-              id="product-grid"
-              className={
-                viewMode === "grid"
-                  ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6"
-                  : "grid grid-cols-1 gap-6"
-              }
-            >
-              {PRODUCTS_DATA.map((product) => (
-                <ProductCatalogCard
-                  key={product.id}
-                  product={product}
-                  viewMode={viewMode}
-                />
-              ))}
-            </div>
+            {filteredAndSortedProducts.length === 0 ? (
+              <div
+                className={`text-center py-16 text-sm font-medium rounded-xl border ${
+                  isDarkMode
+                    ? "bg-[#111827] border-[#334155] text-slate-400"
+                    : "bg-white border-slate-200 text-slate-500"
+                }`}
+              >
+                No products match your active filters.
+              </div>
+            ) : (
+              <div
+                id="product-grid"
+                className={
+                  viewMode === "grid"
+                    ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6"
+                    : "grid grid-cols-1 gap-6"
+                }
+              >
+                {filteredAndSortedProducts.map((product) => (
+                  <ProductCatalogCard
+                    key={product.id}
+                    product={product}
+                    viewMode={viewMode}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* Pagination controls */}
             <div
