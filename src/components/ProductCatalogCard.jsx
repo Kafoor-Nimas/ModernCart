@@ -132,8 +132,8 @@ export default function ProductCatalogCard({ product, viewMode }) {
                 className="w-1.5 h-1.5 rounded-full"
                 style={{
                   backgroundColor: product.stockStatus.includes("Low Stock")
-                    ? "#F59E0B"
-                    : "#22C55E",
+                    ? "#F59E0B": product.stockStatus.includes("Out Of Stock")?"#FF0000":"#22C55E",
+                    
                 }}
               ></span>
               <span
@@ -143,7 +143,7 @@ export default function ProductCatalogCard({ product, viewMode }) {
                     ? isDarkMode
                       ? "#FBBF24"
                       : "#D97706"
-                    : "#22C55E",
+                    : product.stockStatus.includes("Out Of Stock")?isDarkMode? "#d62013":"#FF0000":"#22C55E",
                 }}
               >
                 {product.stockStatus}
@@ -170,6 +170,7 @@ export default function ProductCatalogCard({ product, viewMode }) {
           className={`material-symbols-outlined text-[18px] ${
             isAdding ? "animate-spin" : ""
           }`}
+          style={{ fontSize: "20px" }}
         >
           {isAdding ? "refresh" : "add_shopping_cart"}
         </span>

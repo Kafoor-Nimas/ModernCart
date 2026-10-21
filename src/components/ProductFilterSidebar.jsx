@@ -35,6 +35,10 @@ export default function ProductFilterSidebar({
     );
   };
 
+  // Calculate percentage positions (assuming max overall range is $0 - $500)
+  const minPercent = Math.min(100, Math.max(0, (minPrice / 500) * 100));
+  const maxPercent = Math.min(100, Math.max(0, (maxPrice / 500) * 100));
+
   return (
     <aside
       className={`w-full lg:w-[280px] shrink-0 p-6 rounded-xl shadow-sm lg:sticky lg:top-28 flex flex-col gap-6 border ${
@@ -106,16 +110,20 @@ export default function ProductFilterSidebar({
                     onChange={() => handleCategoryToggle(cat.name)}
                   />
                   <span
-                    className={`group-hover:text-white transition-colors ${
-                      checked
-                        ? isDarkMode
-                          ? "text-[#F8FAFC] font-medium"
-                          : "text-slate-900 font-medium"
-                        : isDarkMode
-                        ? "text-[#CBD5E1]"
-                        : "text-slate-600"
-                    }`}
-                  >
+  className={`transition-colors ${
+    isDarkMode
+      ? "group-hover:text-white"
+      : "group-hover:text-slate-900"
+  } ${
+    checked
+      ? isDarkMode
+        ? "text-[#F8FAFC] font-medium"
+        : "text-slate-900 font-medium"
+      : isDarkMode
+      ? "text-[#CBD5E1]"
+      : "text-slate-600"
+  }`}
+>
                     {cat.name}
                   </span>
                 </span>
@@ -153,31 +161,42 @@ export default function ProductFilterSidebar({
           </span>
         </div>
 
-        {/* Range Slider Visual Track */}
-        <div className="relative w-full py-2">
+        {/* Dynamic Range Slider Visual Track */}
+        <div className="relative w-full py-2 my-1">
+          {/* Background Track */}
           <div
             className={`w-full h-1.5 rounded-full relative overflow-hidden ${
               isDarkMode ? "bg-[#334155]" : "bg-slate-200"
             }`}
           >
+            {/* Active Blue Fill Between Min and Max */}
             <div
-              className="absolute left-0 top-0 h-full rounded-full"
+              className="absolute top-0 h-full rounded-full transition-all duration-150"
               style={{
-                width: `${Math.min(100, Math.max(0, (maxPrice / 500) * 100))}%`,
+                left: `${minPercent}%`,
+                width: `${Math.max(0, maxPercent - minPercent)}%`,
                 backgroundColor: "#3B82F6",
               }}
             ></div>
           </div>
-          <div className="flex justify-between items-center -mt-2">
-            <div
-              className="w-4 h-4 rounded-full shadow cursor-pointer ring-2 ring-blue-400"
-              style={{ backgroundColor: "#3B82F6" }}
-            ></div>
-            <div
-              className="w-4 h-4 rounded-full shadow cursor-pointer ring-2 ring-blue-400 mr-1/2"
-              style={{ backgroundColor: "#3B82F6" }}
-            ></div>
-          </div>
+
+          {/* Min Price Handle */}
+          <div
+            className="w-4 h-4 rounded-full shadow cursor-pointer ring-2 ring-blue-400 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-150"
+            style={{
+              left: `${minPercent}%`,
+              backgroundColor: "#3B82F6",
+            }}
+          ></div>
+
+          {/* Max Price Handle */}
+          <div
+            className="w-4 h-4 rounded-full shadow cursor-pointer ring-2 ring-blue-400 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-150"
+            style={{
+              left: `${maxPercent}%`,
+              backgroundColor: "#3B82F6",
+            }}
+          ></div>
         </div>
 
         <div className="grid grid-cols-2 gap-2 pt-1">

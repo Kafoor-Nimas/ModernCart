@@ -307,7 +307,7 @@ export const PRODUCTS_DATA = [
     discountBadge: "-10%",
     rating: "4.8",
     reviewsCount: "182",
-    stockStatus: "Low Stock - 5 left",
+    stockStatus: "Out Of Stock",
     category: "Electronics",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBRJWgZFB3oMqSeMATffMCHlf-3g2cI-iQlqi3ZnhwUWjrkyTkJ5FYytZj6Dob1lFkdsTtnBRD52z8sUaoUx62XtQtI5i1h4KqpF_tDGWdR3oE1V3HsLe2zv2xCjUHWUAqAGIKDxtK_T39uzdzXVn3OuFFJbY7IVWTdsXNzFPjzN6y5yx_MMxjeuXaNaiO4HkQ_VhesC9MtavSuc3aUSJbtl8thet-Jy_x2cISwWCGpCY0oo-Dnj-Nx",

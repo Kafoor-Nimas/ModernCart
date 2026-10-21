@@ -1,4 +1,4 @@
-import  { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useApp } from "../context/AppContext";
 import ProductCatalogCard from "../components/ProductCatalogCard";
 import ProductFilterSidebar from "../components/ProductFilterSidebar";
@@ -6,7 +6,6 @@ import { PRODUCTS_DATA } from "../data/data";
 
 export default function Products() {
   const { isDarkMode } = useApp();
-  const [viewMode, setViewMode] = useState("grid"); // 'grid' | 'list'
   const [sortOption, setSortOption] = useState("featured");
 
   // Interactive Filter States
@@ -87,9 +86,13 @@ export default function Products() {
       }
 
       // Stock Filter
-      if (inStockOnly && !product.stockStatus.includes("In Stock")) {
-        return false;
-      }
+      if (
+  inStockOnly &&
+  !product.stockStatus.includes("In Stock") &&
+  !product.stockStatus.includes("Low Stock")
+) {
+  return false;
+}
 
       // On Sale Filter
       if (onSaleOnly && !product.discountBadge) {
@@ -185,7 +188,7 @@ export default function Products() {
                 className={`text-xs uppercase tracking-widest px-2.5 py-0.5 rounded-full self-start font-bold ${
                   isDarkMode
                     ? "text-[#60A5FA] bg-[#3B82F6]/15 border border-[#3B82F6]/30"
-                    : "text-blue-600 bg-blue-50 border border-blue-100"
+                    : "text-blue-600"
                 }`}
               >
                 Curated Catalog
@@ -218,7 +221,7 @@ export default function Products() {
             </div>
           </div>
 
-          {/* Control Bar: Showing count, View Toggles & Sorting */}
+          {/* Control Bar: Showing count & Sorting */}
           <div
             className={`p-4 rounded-xl shadow-sm flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 border ${
               isDarkMode
@@ -242,58 +245,6 @@ export default function Products() {
                 </span>{" "}
                 of {PRODUCTS_DATA.length} products
               </span>
-
-              <div
-                className={`h-4 w-px hidden sm:block ${
-                  isDarkMode ? "bg-[#334155]" : "bg-slate-200"
-                }`}
-              ></div>
-
-              {/* View Switchers */}
-              <div
-                className={`flex items-center gap-1.5 p-1 rounded-lg border ${
-                  isDarkMode
-                    ? "bg-[#1E293B] border-[#334155]"
-                    : "bg-slate-100 border-slate-200"
-                }`}
-              >
-                <button
-                  aria-label="Grid View"
-                  className={`p-1.5 rounded transition-all flex items-center justify-center ${
-                    viewMode === "grid"
-                      ? isDarkMode
-                        ? "bg-[#334155] text-[#38BDF8] shadow-sm"
-                        : "bg-white text-blue-600 shadow-sm"
-                      : isDarkMode
-                      ? "text-[#94A3B8] hover:text-[#F8FAFC]"
-                      : "text-slate-500 hover:text-slate-900"
-                  }`}
-                  type="button"
-                  onClick={() => setViewMode("grid")}
-                >
-                  <span className="material-symbols-outlined text-[20px]">
-                    grid_view
-                  </span>
-                </button>
-                <button
-                  aria-label="List View"
-                  className={`p-1.5 rounded transition-all flex items-center justify-center ${
-                    viewMode === "list"
-                      ? isDarkMode
-                        ? "bg-[#334155] text-[#38BDF8] shadow-sm"
-                        : "bg-white text-blue-600 shadow-sm"
-                      : isDarkMode
-                      ? "text-[#94A3B8] hover:text-[#F8FAFC]"
-                      : "text-slate-500 hover:text-slate-900"
-                  }`}
-                  type="button"
-                  onClick={() => setViewMode("list")}
-                >
-                  <span className="material-symbols-outlined text-[20px]">
-                    view_list
-                  </span>
-                </button>
-              </div>
             </div>
 
             {/* Sorting Select Dropdown */}
@@ -361,6 +312,7 @@ export default function Products() {
                         ? "text-[#94A3B8] group-hover:text-[#F8FAFC]"
                         : "text-blue-500 group-hover:text-blue-900"
                     }`}
+                    style={{ fontSize: "16px" }}
                   >
                     close
                   </span>
@@ -383,7 +335,7 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Main Grid Content Area */}
+      {/* Main Content Area */}
       <div className="max-w-[1700px] mx-auto w-full px-6 py-8">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Sidebar Filters */}
@@ -420,17 +372,13 @@ export default function Products() {
             ) : (
               <div
                 id="product-grid"
-                className={
-                  viewMode === "grid"
-                    ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6"
-                    : "grid grid-cols-1 gap-6"
-                }
+                className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6"
               >
                 {filteredAndSortedProducts.map((product) => (
                   <ProductCatalogCard
                     key={product.id}
                     product={product}
-                    viewMode={viewMode}
+                    viewMode="grid"
                   />
                 ))}
               </div>
