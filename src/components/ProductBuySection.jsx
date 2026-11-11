@@ -39,7 +39,7 @@ export default function ProductBuySection({
           </span>
         </div>
         <h1
-          className={`font-headline-lg text-headline-lg font-bold tracking-tight leading-tight ${
+          className={`font-headline-lg text-2xl font-bold tracking-tight leading-tight ${
             isDarkMode ? "" : "text-on-surface"
           }`}
           style={{ color: isDarkMode ? "#F8FAFC" : undefined }}
@@ -90,7 +90,7 @@ export default function ProductBuySection({
         ></span>
         <div
           className="flex items-center gap-1"
-          style={{ color: isDarkMode ? "#22C55E" : undefined }}
+          style={{ color: isDarkMode ? "#22C55E" : "#22C55E" }}
         >
           <span className="material-symbols-outlined text-[16px]">thumb_up</span>
           <span className="font-label-sm text-label-sm font-semibold">
@@ -117,8 +117,8 @@ export default function ProductBuySection({
             $249.00
           </span>
           <span
-            className="font-headline-sm text-headline-sm line-through tabular-nums"
-            style={{ color: isDarkMode ? "#64748B" : undefined }}
+            className="font-bold text-headline-sm line-through tabular-nums"
+            style={{ color: isDarkMode ? "#64748B" : "#64748B" }}
           >
             $299.00
           </span>
@@ -127,8 +127,8 @@ export default function ProductBuySection({
               isDarkMode ? "" : "bg-error-container text-on-error-container"
             }`}
             style={{
-              backgroundColor: isDarkMode ? "rgba(244, 63, 94, 0.2)" : undefined,
-              color: isDarkMode ? "#F43F5E" : undefined,
+              backgroundColor: isDarkMode ? "rgba(244, 63, 94, 0.2)" : "rgba(244, 63, 94, 0.2)",
+              color: isDarkMode ? "#F43F5E" : "#F43F5E",
             }}
           >
             Save $50 (17% OFF)
@@ -163,12 +163,12 @@ export default function ProductBuySection({
           ></span>
         </span>
         <span
-          className="font-label-sm text-label-sm"
+          className="font-semibold text-label-sm"
           style={{ color: isDarkMode ? "#CBD5E1" : undefined }}
         >
           <strong
             className="font-bold"
-            style={{ color: isDarkMode ? "#22C55E" : undefined }}
+            style={{ color: isDarkMode ? "#22C55E" : "#22C55E" }}
           >
             In Stock
           </strong>{" "}
@@ -187,7 +187,7 @@ export default function ProductBuySection({
           </span>
           <span
             className="font-label-sm text-label-sm font-bold"
-            style={{ color: isDarkMode ? "#60A5FA" : undefined }}
+            style={{ color: isDarkMode ? "#60A5FA" : "#60A5FA" }}
           >
             {selectedColor}
           </span>
@@ -237,7 +237,7 @@ export default function ProductBuySection({
       {/* Quantity Selector */}
       <div className="flex items-center gap-space-sm">
         <span
-          className="font-label-md text-label-md shrink-0"
+          className="font-bold text-label-md shrink-0"
           style={{ color: isDarkMode ? "#CBD5E1" : undefined }}
         >
           Quantity:
@@ -277,8 +277,8 @@ export default function ProductBuySection({
           </button>
         </div>
         <span
-          className="font-body-sm text-[12px]"
-          style={{ color: isDarkMode ? "#64748B" : undefined }}
+          className="font-semibold text-[12px]"
+          style={{ color: isDarkMode ? "#64748B" : "#64748B" }}
         >
           Max 5 units per verified account
         </span>
@@ -313,7 +313,7 @@ export default function ProductBuySection({
             style={{
               backgroundColor: isDarkMode ? "#1E293B" : undefined,
               borderColor: isDarkMode ? "#475569" : undefined,
-              color: isDarkMode ? "#F8FAFC" : undefined,
+              color: isDarkMode ? "#F8FAFC" : "#ffffff",
             }}
           >
             <span>Instant Buy</span>
@@ -323,7 +323,7 @@ export default function ProductBuySection({
         <button
           type="button"
           onClick={onToggleWishlist}
-          className={`flex items-center justify-center gap-space-xs py-2.5 px-space-md rounded-xl font-label-md text-label-md shadow-sm transition-all ${
+          className={`flex items-center justify-center gap-space-xs py-2.5 px-space-md rounded-xl font-semibold text-label-md shadow-sm transition-all ${
             isDarkMode ? "border" : "bg-surface-container-lowest text-on-surface hover:bg-surface-container"
           }`}
           style={{
@@ -337,7 +337,7 @@ export default function ProductBuySection({
               isWishlisted ? "text-error" : ""
             }`}
             style={{
-              color: isDarkMode && !isWishlisted ? "#94A3B8" : undefined,
+              color: isDarkMode && !isWishlisted ? "#94A3B8" : "#94A3B8",
               fontVariationSettings: isWishlisted ? "'FILL' 1" : "'FILL' 0",
             }}
           >
@@ -372,7 +372,7 @@ export default function ProductBuySection({
           <li className="flex items-center gap-2">
             <span
               className="material-symbols-outlined text-[18px] shrink-0"
-              style={{ color: isDarkMode ? "#3B82F6" : undefined }}
+              style={{ color: isDarkMode ? "#3B82F6" : "#3B82F6" }}
             >
               graphic_eq
             </span>
@@ -381,7 +381,7 @@ export default function ProductBuySection({
           <li className="flex items-center gap-2">
             <span
               className="material-symbols-outlined text-[18px] shrink-0"
-              style={{ color: isDarkMode ? "#3B82F6" : undefined }}
+              style={{ color: isDarkMode ? "#3B82F6" : "#3B82F6" }}
             >
               battery_charging_full
             </span>
@@ -390,7 +390,7 @@ export default function ProductBuySection({
           <li className="flex items-center gap-2">
             <span
               className="material-symbols-outlined text-[18px] shrink-0"
-              style={{ color: isDarkMode ? "#3B82F6" : undefined }}
+              style={{ color: isDarkMode ? "#3B82F6" : "#3B82F6" }}
             >
               hearing
             </span>
@@ -399,7 +399,7 @@ export default function ProductBuySection({
           <li className="flex items-center gap-2">
             <span
               className="material-symbols-outlined text-[18px] shrink-0"
-              style={{ color: isDarkMode ? "#3B82F6" : undefined }}
+              style={{ color: isDarkMode ? "#3B82F6" : "#3B82F6" }}
             >
               hub
             </span>
