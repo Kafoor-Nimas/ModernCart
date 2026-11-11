@@ -1,12 +1,26 @@
+import { Link } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 
 export default function ProductCard({ product }) {
   const { addToCart, toggleWishlist, wishlist, isDarkMode } = useApp();
-  const isFavorited = wishlist.includes(product.id);
+  const isFavorited = wishlist?.includes(product.id);
+
+  const handleWishlistClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(product.id);
+  };
+
+  const handleAddToCartClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+  };
 
   return (
-    <div
-      className={`rounded-2xl p-4 shadow-sm border transition-all duration-300 flex flex-col justify-between group ${
+    <Link
+      to={`/product/${product.id}`}
+      className={`rounded-2xl p-4 shadow-sm border transition-all duration-300 flex flex-col justify-between group cursor-pointer ${
         isDarkMode
           ? "bg-[#1E293B] border-[#334155] text-[#CBD5E1]"
           : "bg-white border-slate-100 text-slate-900"
@@ -41,7 +55,7 @@ export default function ProductCard({ product }) {
                 : "bg-white/80 text-slate-400 hover:text-red-500"
             } ${isFavorited ? "text-[#F43F5E]" : ""}`}
             type="button"
-            onClick={() => toggleWishlist(product.id)}
+            onClick={handleWishlistClick}
           >
             <span
               className="material-symbols-outlined text-[18px]"
@@ -117,12 +131,14 @@ export default function ProductCard({ product }) {
           className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-white text-xs font-semibold transition-colors shadow-sm active:scale-95 hover:brightness-110"
           style={{ backgroundColor: "#3B82F6" }}
           type="button"
-          onClick={() => addToCart(product)}
+          onClick={handleAddToCartClick}
         >
-          <span className="material-symbols-outlined " style={{ fontSize: "18px" }}>shopping_bag</span>
+          <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
+            shopping_bag
+          </span>
           <span>Add</span>
         </button>
       </div>
-    </div>
+    </Link>
   );
 }
