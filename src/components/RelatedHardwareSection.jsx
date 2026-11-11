@@ -35,7 +35,7 @@ export default function RelatedHardwareSection() {
   ];
 
   return (
-    <section className="w-full max-w-[1600px] mx-auto p-8 py-space-2xl">
+    <section className="w-full max-w-[1600px] mx-auto p-10 py-space-2xl">
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-space-xs mb-space-xl">
         <div>
           <span
@@ -104,7 +104,7 @@ export default function RelatedHardwareSection() {
             <div className="flex flex-col flex-1 justify-between">
               <div>
                 <span
-                  className={`font-body-sm text-[11px] uppercase font-semibold ${
+                  className={`font-body-sm text-[11px] uppercase font-bold ${
                     isDarkMode ? "text-slate-400" : "text-outline"
                   }`}
                 >
@@ -151,7 +151,7 @@ export default function RelatedHardwareSection() {
                   className={`p-2 rounded-lg transition-colors ${
                     isDarkMode
                       ? "bg-[#111827] border border-[#334155] text-blue-400 hover:bg-blue-600 hover:text-white"
-                      : "bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface"
+                      : "bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface"
                   }`}
                 >
                   <span className="material-symbols-outlined text-[18px]">

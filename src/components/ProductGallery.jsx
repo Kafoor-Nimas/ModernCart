@@ -138,7 +138,7 @@ export default function ProductGallery({ mainViewIndex, setMainView, images, vie
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
             style={{
-              backgroundColor: isDarkMode ? "#111827" : "#b3dff5",
+              backgroundColor: isDarkMode ? "#111827" : "#eff4ff",
               color: isDarkMode ? "#60A5FA" :  "#60A5FA" ,
             }}
           >
@@ -174,7 +174,7 @@ export default function ProductGallery({ mainViewIndex, setMainView, images, vie
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
             style={{
-              backgroundColor: isDarkMode ? "#111827" : "#b3dff5",
+              backgroundColor: isDarkMode ? "#111827" : "#eff4ff",
               color: isDarkMode ? "#60A5FA" : "#60A5FA",
             }}
           >
@@ -210,7 +210,7 @@ export default function ProductGallery({ mainViewIndex, setMainView, images, vie
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
             style={{
-              backgroundColor: isDarkMode ? "#111827" : "#b3dff5",
+              backgroundColor: isDarkMode ? "#111827" : "#eff4ff",
               color: isDarkMode ? "#60A5FA" : "#60A5FA",
             }}
           >
