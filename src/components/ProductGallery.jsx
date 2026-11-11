@@ -138,8 +138,8 @@ export default function ProductGallery({ mainViewIndex, setMainView, images, vie
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
             style={{
-              backgroundColor: isDarkMode ? "#111827" : undefined,
-              color: isDarkMode ? "#60A5FA" : undefined,
+              backgroundColor: isDarkMode ? "#111827" : "#b3dff5",
+              color: isDarkMode ? "#60A5FA" :  "#60A5FA" ,
             }}
           >
             <span className="material-symbols-outlined text-[20px]">
@@ -174,8 +174,8 @@ export default function ProductGallery({ mainViewIndex, setMainView, images, vie
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
             style={{
-              backgroundColor: isDarkMode ? "#111827" : undefined,
-              color: isDarkMode ? "#60A5FA" : undefined,
+              backgroundColor: isDarkMode ? "#111827" : "#b3dff5",
+              color: isDarkMode ? "#60A5FA" : "#60A5FA",
             }}
           >
             <span className="material-symbols-outlined text-[20px]">
@@ -210,8 +210,8 @@ export default function ProductGallery({ mainViewIndex, setMainView, images, vie
           <div
             className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
             style={{
-              backgroundColor: isDarkMode ? "#111827" : undefined,
-              color: isDarkMode ? "#60A5FA" : undefined,
+              backgroundColor: isDarkMode ? "#111827" : "#b3dff5",
+              color: isDarkMode ? "#60A5FA" : "#60A5FA",
             }}
           >
             <span className="material-symbols-outlined text-[20px]">eco</span>

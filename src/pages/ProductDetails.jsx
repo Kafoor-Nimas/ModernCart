@@ -55,7 +55,7 @@ export default function ProductDetails() {
         className="w-full pt-20 flex-1"
         style={{ backgroundColor: isDarkMode ? "#0F172A" : undefined }}
       >
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full gap-5">
           {/* Breadcrumb Navigation */}
           <ProductBreadcrumb />
 

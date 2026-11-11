@@ -35,26 +35,29 @@ export default function RelatedHardwareSection() {
   ];
 
   return (
-    <section className="w-full max-w-[1600px] mx-auto px-6 py-space-2xl">
+    <section className="w-full max-w-[1600px] mx-auto p-8 py-space-2xl">
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-space-xs mb-space-xl">
         <div>
           <span
-            className="font-label-sm text-label-sm font-bold uppercase tracking-widest"
-            style={{ color: isDarkMode ? "#60A5FA" : undefined }}
+            className={`font-label-sm text-label-sm font-bold uppercase tracking-widest ${
+              isDarkMode ? "text-blue-400" : "text-primary"
+            }`}
           >
             Complete The Acoustic Setup
           </span>
           <h2
-            className="font-headline-lg text-headline-lg font-bold tracking-tight"
-            style={{ color: isDarkMode ? "#F8FAFC" : undefined }}
+            className={`font-headline-lg text-headline-lg font-bold tracking-tight ${
+              isDarkMode ? "text-slate-50" : "text-on-surface"
+            }`}
           >
             Complementary Hardware
           </h2>
         </div>
         <a
-          className="font-label-md text-label-md flex items-center gap-1 transition-colors"
+          className={`font-label-md text-label-md flex items-center gap-1 transition-colors ${
+            isDarkMode ? "text-blue-400 hover:text-blue-300" : "text-primary hover:text-primary-container"
+          }`}
           href="#"
-          style={{ color: isDarkMode ? "#60A5FA" : undefined }}
         >
           <span>Browse audio catalog</span>
           <span className="material-symbols-outlined text-[16px]">
@@ -68,21 +71,15 @@ export default function RelatedHardwareSection() {
           <div
             key={idx}
             className={`group rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col ${
-              isDarkMode ? "border" : "bg-surface-container-lowest"
+              isDarkMode
+                ? "bg-[#1E293B] border border-[#334155]"
+                : "bg-surface-container-lowest"
             }`}
-            style={{
-              backgroundColor: isDarkMode ? "#1E293B" : undefined,
-              borderColor: isDarkMode ? "#334155" : undefined,
-            }}
           >
             <div
               className={`relative aspect-square rounded-lg overflow-hidden mb-space-sm ${
-                isDarkMode ? "border" : "bg-surface-container-low"
+                isDarkMode ? "bg-[#111827] border border-[#334155]" : "bg-surface-container-low"
               }`}
-              style={{
-                backgroundColor: isDarkMode ? "#111827" : undefined,
-                borderColor: isDarkMode ? "#334155" : undefined,
-              }}
             >
               <img
                 alt={item.title}
@@ -94,16 +91,9 @@ export default function RelatedHardwareSection() {
                 aria-label="Add to wishlist"
                 className={`absolute top-2 right-2 p-1.5 rounded-full backdrop-blur-sm transition-colors ${
                   isDarkMode
-                    ? "border"
+                    ? "bg-[#1E293B]/80 border border-[#334155] text-slate-300 hover:text-red-400"
                     : "bg-surface-container-lowest/80 text-outline hover:text-error"
                 }`}
-                style={{
-                  backgroundColor: isDarkMode
-                    ? "rgba(30, 41, 59, 0.85)"
-                    : undefined,
-                  borderColor: isDarkMode ? "#334155" : undefined,
-                  color: isDarkMode ? "#CBD5E1" : undefined,
-                }}
               >
                 <span className="material-symbols-outlined text-[18px]">
                   favorite
@@ -114,21 +104,20 @@ export default function RelatedHardwareSection() {
             <div className="flex flex-col flex-1 justify-between">
               <div>
                 <span
-                  className="font-body-sm text-[11px] uppercase font-semibold"
-                  style={{ color: isDarkMode ? "#94A3B8" : undefined }}
+                  className={`font-body-sm text-[11px] uppercase font-semibold ${
+                    isDarkMode ? "text-slate-400" : "text-outline"
+                  }`}
                 >
                   AURASOUND
                 </span>
                 <h4
-                  className="font-headline-sm text-[16px] leading-snug font-bold mt-0.5 line-clamp-1"
-                  style={{ color: isDarkMode ? "#F8FAFC" : undefined }}
+                  className={`font-headline-sm text-[16px] leading-snug font-bold mt-0.5 line-clamp-1 ${
+                    isDarkMode ? "text-slate-50" : "text-on-surface"
+                  }`}
                 >
                   {item.title}
                 </h4>
-                <div
-                  className="flex items-center gap-1 text-[12px] my-1"
-                  style={{ color: isDarkMode ? "#FBBF24" : "#F59E0B" }}
-                >
+                <div className="flex items-center gap-1 text-[#F59E0B] text-[12px] my-1">
                   <span
                     className="material-symbols-outlined text-[14px]"
                     style={{ fontVariationSettings: "'FILL' 1" }}
@@ -136,12 +125,13 @@ export default function RelatedHardwareSection() {
                     star
                   </span>
                   <span
-                    className="font-label-sm font-bold"
-                    style={{ color: isDarkMode ? "#F8FAFC" : undefined }}
+                    className={`font-label-sm font-bold ${
+                      isDarkMode ? "text-slate-50" : "text-on-surface"
+                    }`}
                   >
                     {item.rating}
                   </span>
-                  <span style={{ color: isDarkMode ? "#94A3B8" : undefined }}>
+                  <span className={isDarkMode ? "text-slate-400" : "text-outline"}>
                     ({item.reviews})
                   </span>
                 </div>
@@ -149,8 +139,9 @@ export default function RelatedHardwareSection() {
 
               <div className="flex items-center justify-between pt-space-xs mt-space-xs">
                 <span
-                  className="font-price-card text-price-card font-bold"
-                  style={{ color: isDarkMode ? "#F8FAFC" : undefined }}
+                  className={`font-price-card text-price-card font-bold ${
+                    isDarkMode ? "text-slate-50" : "text-on-surface"
+                  }`}
                 >
                   {item.price}
                 </span>
@@ -159,14 +150,9 @@ export default function RelatedHardwareSection() {
                   title="Quick Add"
                   className={`p-2 rounded-lg transition-colors ${
                     isDarkMode
-                      ? "border"
+                      ? "bg-[#111827] border border-[#334155] text-blue-400 hover:bg-blue-600 hover:text-white"
                       : "bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface"
                   }`}
-                  style={{
-                    backgroundColor: isDarkMode ? "#111827" : undefined,
-                    borderColor: isDarkMode ? "#334155" : undefined,
-                    color: isDarkMode ? "#60A5FA" : undefined,
-                  }}
                 >
                   <span className="material-symbols-outlined text-[18px]">
                     add_shopping_cart
