@@ -5,6 +5,7 @@ import Home from "./pages/Home.jsx";
 import Products from "./pages/Products.jsx";
 import Header from "./components/Header.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import CategoriesPage from "./pages/CategoriesPage.jsx";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
       <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/categories" element={<CategoriesPage />} />
 
       {/* Admin Routes */}
       {/* <Route path="/admin/products" element={<ManageProducts />} />
