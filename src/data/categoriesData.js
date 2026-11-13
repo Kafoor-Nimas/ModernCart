@@ -8,7 +8,7 @@ export const FEATURED_CATEGORIES = [
     icon: "devices",
     badge: "Trending",
     lightImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBzeCwzAujlKZuI129tOBiektZZ1IrwOiqXpiiYCJ0x1hpXq9vAbUq2S0Plux_3PPRqEnHoAZj_6e2_FTNGjQrOi59rtPThfBB_mcijODu1zbe5Wl4pTQE-Mjp2_xcCE1QCeNsY-I9GWi_CEaDZncBvyT7qCqxjjQaUbCcrTPhujW86iUflZOR3pEhCKFqe_yIf9tbns3t0In63m7i4yPIVzawyzcJfvVKtQNbSMxE",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuD7qnagkSHI1xqXMeTE3spxrOXx0T_nt5pxuxQUO-WDQ5WvdpecKluEO0O_rJbLq5zH-3qept0S7O_9C8Q1cU-2wDPOwjtiW2oTu86tr9bMUofHLaZZPb_xjiZ1dLZoJahhqSUvnGcHpY9iilnXFXEeK2eL2HGvinaUT5cGJlfR8IwZ-9yTqfTHWuAaIrxciQ5IRP1AiRSNbwdgJ7gkoNhsvx7SVIuYz2-9tDMTxBzqZkYSePd4Ngh_",
     darkImg:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCxN4C0iZYhKHc4iDeAjwF_8RzEmWkBsuo-iMpVFj97mqzH80vbr3abpdYUWl9PPLkhbDk4accFgAkif72c_qiklajxLLgDzDH41sYaiRyqjo4_I5Jo1q5t179YLcI-tZOvjXp0LsTAKdoQ2Xt3QBkW5G-jqTWrYlHqiMMOkBuDniZIz88uQO7D5jyNpgaUZtwiWfqKuIKCA-cD5WOuMCo24_Ktj2_J3DSYikW0RIM",
   },
@@ -21,9 +21,10 @@ export const FEATURED_CATEGORIES = [
     icon: "apparel",
     badge: null,
     lightImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB8SftFcck9TZlgZf0nn02eTsT3FMbL2e-jmf0TRjJj8mA5Oobf5hVPaHk2x5NoSZnmZxZe1wSBZJu61D7JUZX7fw46TLmqfLePmrJEgaiwShSXaKzG8UqC55hStbnE_em5J6xBTNvS2D1Yq-abOnr7RcB0Nzg-CKeCxpZGUwkDRE9eQxCfR7W7s6ZGNsDelPg6UhWUiXoyGqJsoC2lbDdEcVhej6tASxEBCjL-fD0",
+     
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuA5JXa5w3xp-wfq58-qhrh7nLj0l4ecuTq_5ZECMa7KwSuiCWdrYNROLcVaUWVLPbTWEtFr65Dwx31iwTMupTAgQSiTE3CQotH7XcHNnCY8xVV4FaYfzt1Wn_4ZcHSOZql7YLfiH2ey7v1XxKE_9LMRdNYR6zGTDj9CFc_ZNOXqpwEIx4rXzQ5wahe1hX13giDOyjy6ZE0x8bGxq0ANIEtagH6UjNqIX97l_CFBm-c",
     darkImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA5JXa5w3xp-wfq58-qhrh7nLj0l4ecuTq_5ZECMa7KwSuiCWdrYNROLcVaUWVLPbTWEtFr65Dwx31iwTMupTAgQSiTE3CQotH7XcHNnCY8xVV4FaYfzt1Wn_4ZcHSOZql7YLfiH2ey7v1XxKE_9LMRdNYR6zGTDj9CFc_ZNOXqpwEIx4rXzQ5wahe1hX13giDOyjy6ZE0x8bGxq0ANIEtagH6UjNqIX97l_CFBm-c",
+     "https://lh3.googleusercontent.com/aida-public/AB6AXuB8SftFcck9TZlgZf0nn02eTsT3FMbL2e-jmf0TRjJj8mA5Oobf5hVPaHk2x5NoSZnmZxZe1wSBZJu61D7JUZX7fw46TLmqfLePmrJEgaiwShSXaKzG8UqC55hStbnE_em5J6xBTNvS2D1Yq-abOnr7RcB0Nzg-CKeCxpZGUwkDRE9eQxCfR7W7s6ZGNsDelPg6UhWUiXoyGqJsoC2lbDdEcVhej6tASxEBCjL-fD0",
   },
   {
     id: "home-living",
@@ -34,9 +35,10 @@ export const FEATURED_CATEGORIES = [
     icon: "chair",
     badge: "Featured",
     lightImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA9-O5RVSLcz-Ip1Y1DJu77QjcaJThkc518MpYzNA_AZSKjqG3AMdUef5vM9sV5g_RiFHJyAPUYfQd1vIvdKKFCpRHcuSJ6K-NMwinMry_zBcsL3FnbXzUQSPJB8_AeMWxWMskbgOKpyikYdIWHZGOtqa_lE_W1Cq9tU7Ibvb8uyMNvELNdjv-kO4ghi2XoFyrtbYF1Qg3TeIgFVhznJz4eZfGQXQPa3-Bv1lLlsYw",
+     
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuALr-oNLATRRzh68_WluxBI1-1826vBw1OHJBex8_-6hQ1npjj3LMZ2HZ1qxDoQ781ot3TZNp7fif_63_wzpe-0JFytYK6mWjAHFMY0jqFoGz1lKKyazfH5h-sw5SyeGtewDGeHMkNrQaOrdjR9pzwdAnMbjk56vCVbV7BbJG4tUIL4z4zb_KDgMJc8i4sQs2AgL-4EJzX2tWRWB4ssZqxXkX3YyrkDJj3fqWVuDAk",
     darkImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuALr-oNLATRRzh68_WluxBI1-1826vBw1OHJBex8_-6hQ1npjj3LMZ2HZ1qxDoQ781ot3TZNp7fif_63_wzpe-0JFytYK6mWjAHFMY0jqFoGz1lKKyazfH5h-sw5SyeGtewDGeHMkNrQaOrdjR9pzwdAnMbjk56vCVbV7BbJG4tUIL4z4zb_KDgMJc8i4sQs2AgL-4EJzX2tWRWB4ssZqxXkX3YyrkDJj3fqWVuDAk",
+     "https://lh3.googleusercontent.com/aida-public/AB6AXuA9-O5RVSLcz-Ip1Y1DJu77QjcaJThkc518MpYzNA_AZSKjqG3AMdUef5vM9sV5g_RiFHJyAPUYfQd1vIvdKKFCpRHcuSJ6K-NMwinMry_zBcsL3FnbXzUQSPJB8_AeMWxWMskbgOKpyikYdIWHZGOtqa_lE_W1Cq9tU7Ibvb8uyMNvELNdjv-kO4ghi2XoFyrtbYF1Qg3TeIgFVhznJz4eZfGQXQPa3-Bv1lLlsYw",
   },
   {
     id: "beauty-care",
@@ -47,9 +49,10 @@ export const FEATURED_CATEGORIES = [
     icon: "spa",
     badge: null,
     lightImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD9QLgcBSKipwRc92aNQ5HNmVnOSZcL2LD-Y-B9vOIeqIEwipG27QThwLz0DqaNnRqixHst9tKhzLwhoraPfzHxpwgGPkZHR-4AEDSsaIBjBdXaEx20Gf_iFkv2MZvAWtxvpqzyvEnsLvAiCCBGlniWEX0T-eRa08HH6GuMqEgdxLNldhIjvZGwf-d-3_vgd0_a77vH15Phg9zgmZehTNB7tKEEHJ2ViI_Dsbl7cNI",
+      
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCOjwJi1V87xoKvVanwjHVBYOnTFCANE8wdBhiOKIwJvZQvVItiE_Vk-Q3D72b_I0DEH2rywviu02dP3gGX1OQSXNdOi4zw-ylhzClFufsXDR24VBtUVSGZcf3b_gKhvBhShZ4POzZ590TcbId4Nxy4mcvADqkG2UW_dUafpfX3iP-zZTSZTIVjcFS20y1V2h_-nQcuyJrh1674GCVm5KnVNpCYFDMli7YH78GJcEo",
     darkImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCOjwJi1V87xoKvVanwjHVBYOnTFCANE8wdBhiOKIwJvZQvVItiE_Vk-Q3D72b_I0DEH2rywviu02dP3gGX1OQSXNdOi4zw-ylhzClFufsXDR24VBtUVSGZcf3b_gKhvBhShZ4POzZ590TcbId4Nxy4mcvADqkG2UW_dUafpfX3iP-zZTSZTIVjcFS20y1V2h_-nQcuyJrh1674GCVm5KnVNpCYFDMli7YH78GJcEo",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuD9QLgcBSKipwRc92aNQ5HNmVnOSZcL2LD-Y-B9vOIeqIEwipG27QThwLz0DqaNnRqixHst9tKhzLwhoraPfzHxpwgGPkZHR-4AEDSsaIBjBdXaEx20Gf_iFkv2MZvAWtxvpqzyvEnsLvAiCCBGlniWEX0T-eRa08HH6GuMqEgdxLNldhIjvZGwf-d-3_vgd0_a77vH15Phg9zgmZehTNB7tKEEHJ2ViI_Dsbl7cNI",
   },
 ];
 

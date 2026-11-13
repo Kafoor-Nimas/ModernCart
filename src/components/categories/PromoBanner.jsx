@@ -8,7 +8,7 @@ const PROMO_PERKS = [
 
 export default function PromoBanner({ isDarkMode }) {
   return (
-    <section className="w-full max-w-7xl mx-auto px-margin-mobile lg:px-margin pt-space-md pb-space-2xl">
+    <section className="w-full max-w-[1600px] mx-auto px-margin-mobile lg:px-margin pt-space-md pb-space-2xl">
       <div
         className={`relative overflow-hidden rounded-2xl p-space-lg md:p-space-xl shadow-xl ${
           isDarkMode
@@ -33,7 +33,7 @@ export default function PromoBanner({ isDarkMode }) {
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold mb-space-sm ${
                 isDarkMode
                   ? "bg-[#222a3d] text-[#adc6ff]"
-                  : "bg-surface-variant/20 text-inverse-on-surface"
+                  : "bg-surface-container-low/40 text-inverse-on-surface"
               }`}
             >
               <span className="material-symbols-outlined text-[16px]">
@@ -42,7 +42,7 @@ export default function PromoBanner({ isDarkMode }) {
               Engineered Excellence Guaranteed
             </div>
             <h2
-              className={`font-headline-xl text-headline-xl font-bold tracking-tight mb-space-xs ${
+              className={`font-headline-xl text-3xl font-bold tracking-tight mb-space-xs ${
                 isDarkMode ? "text-[#dae2fd]" : "text-inverse-on-surface"
               }`}
             >
@@ -67,7 +67,7 @@ export default function PromoBanner({ isDarkMode }) {
                 <div key={perk.label} className="flex items-center gap-1.5">
                   <span
                     className={`material-symbols-outlined text-[18px] ${
-                      isDarkMode ? "text-[#adc6ff]" : "text-inverse-primary"
+                      isDarkMode ? "text-[#adc6ff]" : "text-primary"
                     }`}
                   >
                     {perk.icon}

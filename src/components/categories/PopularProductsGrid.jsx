@@ -23,7 +23,7 @@ export default function PopularProductsGrid({ isDarkMode }) {
   };
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-xl">
+    <section className="w-full max-w-[1600px] mx-auto px-margin-mobile lg:px-margin py-space-xl">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-space-lg">
         <div>
           <p
@@ -34,7 +34,7 @@ export default function PopularProductsGrid({ isDarkMode }) {
             Curated Highlights
           </p>
           <h2
-            className={`font-headline-lg text-headline-lg font-bold tracking-tight ${
+            className={`font-headline-lg text-3xl font-bold tracking-tight ${
               isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
             }`}
           >
@@ -54,7 +54,7 @@ export default function PopularProductsGrid({ isDarkMode }) {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {POPULAR_PRODUCTS.map((prod) => {
           const isWishlisted = !!wishlist[prod.id];
           const isAdded = !!addedToCart[prod.id];
@@ -198,7 +198,7 @@ export default function PopularProductsGrid({ isDarkMode }) {
                       prod.badgeType === "discount"
                         ? isDarkMode
                           ? "text-[#ffb4ab]"
-                          : "text-error"
+                          : "text-[#FF0000]"
                         : isDarkMode
                         ? "text-[#c2c6d6]"
                         : "text-secondary"

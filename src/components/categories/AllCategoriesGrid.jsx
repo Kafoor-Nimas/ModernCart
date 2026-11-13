@@ -13,7 +13,7 @@ export default function AllCategoriesGrid({
         isDarkMode ? "bg-[#131b2e]/60" : "bg-surface-container-low/70"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+      <div className="max-w-[1600px] mx-auto px-margin-mobile lg:px-margin">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-space-lg gap-space-xs">
           <div>
             <p
@@ -24,7 +24,7 @@ export default function AllCategoriesGrid({
               Comprehensive Index
             </p>
             <h2
-              className={`font-headline-lg text-headline-lg font-bold tracking-tight ${
+              className={`font-headline-lg text-3xl font-bold tracking-tight ${
                 isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
               }`}
             >
@@ -91,7 +91,7 @@ export default function AllCategoriesGrid({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {categories.map((cat) => (
               <Link
                 key={cat.id}

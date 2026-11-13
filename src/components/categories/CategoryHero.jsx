@@ -13,13 +13,13 @@ export default function CategoryHero({ isDarkMode }) {
       return isDarkMode ? "text-[#adc6ff]" : "text-primary";
     }
     if (accent === "tertiary") {
-      return isDarkMode ? "text-[#f9bd22]" : "text-tertiary";
+      return isDarkMode ? "text-[#f9bd22]" : "text-[#8df740]";
     }
     return isDarkMode ? "text-[#dae2fd]" : "text-on-surface";
   };
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-margin-mobile lg:px-margin pt-space-lg pb-space-md">
+    <section className="w-full max-w-[1600px] mx-auto px-margin-mobile lg:px-margin pt-space-lg pb-space-md">
       {/* Breadcrumb */}
       <nav
         aria-label="Breadcrumb"
@@ -77,7 +77,7 @@ export default function CategoryHero({ isDarkMode }) {
             Directory Catalog
           </div>
           <h1
-            className={`font-headline-xl text-headline-xl font-bold tracking-tight mb-space-xs ${
+            className={`font-headline-xl text-4xl font-bold tracking-tight mb-space-xs ${
               isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
             }`}
           >
@@ -98,7 +98,7 @@ export default function CategoryHero({ isDarkMode }) {
           className={`mt-space-lg pt-space-md grid grid-cols-2 sm:grid-cols-4 gap-space-md rounded-lg p-space-md backdrop-blur ${
             isDarkMode
               ? "bg-[#171f33]/80 border border-[#424754]/40"
-              : "bg-surface-container/60"
+              : "bg-surface-container-high"
           }`}
         >
           {METRICS.map((item) => (

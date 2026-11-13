@@ -35,38 +35,40 @@ export default function CategoriesPage() {
     setActiveFilter("all");
   };
 
-  return (
-    <div
-      className={`flex flex-col w-full min-h-screen transition-colors ${
-        isDarkMode
-          ? "bg-[#0b1326] text-[#dae2fd]"
-          : "bg-surface text-on-surface"
-      }`}
-    >
-      <CategoryHero isDarkMode={isDarkMode} />
+ // Inside CategoriesPage.jsx
+const isFiltering = activeFilter !== "all" || searchQuery.trim() !== "";
 
-      <CategoryFilterBar
-        isDarkMode={isDarkMode}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
-      />
+return (
+  <div
+    className={`flex flex-col w-full min-h-screen transition-colors py-20 ${
+      isDarkMode
+        ? "bg-[#0b1326] text-[#dae2fd]"
+        : "bg-surface text-on-surface"
+    }`}
+  >
+    <CategoryHero isDarkMode={isDarkMode} />
 
-      <FeaturedCategories isDarkMode={isDarkMode} />
+    <CategoryFilterBar
+      isDarkMode={isDarkMode}
+      searchQuery={searchQuery}
+      setSearchQuery={setSearchQuery}
+      activeFilter={activeFilter}
+      setActiveFilter={setActiveFilter}
+    />
 
-      <AllCategoriesGrid
-        isDarkMode={isDarkMode}
-        categories={filteredCategories}
-        totalCount={ALL_CATEGORIES.length}
-        onResetFilters={handleResetFilters}
-      />
+    {/* Hide FeaturedCollections while user is actively searching/filtering */}
+    {!isFiltering && <FeaturedCategories isDarkMode={isDarkMode} />}
 
-      <PopularProductsGrid isDarkMode={isDarkMode} />
+    <AllCategoriesGrid
+      isDarkMode={isDarkMode}
+      categories={filteredCategories}
+      totalCount={ALL_CATEGORIES.length}
+      onResetFilters={handleResetFilters}
+    />
 
-      <ValuePropsSection isDarkMode={isDarkMode} />
-
-      <PromoBanner isDarkMode={isDarkMode} />
-    </div>
-  );
+    <PopularProductsGrid isDarkMode={isDarkMode} />
+    <ValuePropsSection isDarkMode={isDarkMode} />
+    <PromoBanner isDarkMode={isDarkMode} />
+  </div>
+);
 }

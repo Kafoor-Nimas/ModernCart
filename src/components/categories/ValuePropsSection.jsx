@@ -18,8 +18,8 @@ const VALUE_PROPS = [
 
 export default function ValuePropsSection({ isDarkMode }) {
   return (
-    <section className="w-full max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-md">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+    <section className="w-full max-w-[1600px] mx-auto px-margin-mobile lg:px-margin py-space-md">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {VALUE_PROPS.map((prop) => (
           <div
             key={prop.title}

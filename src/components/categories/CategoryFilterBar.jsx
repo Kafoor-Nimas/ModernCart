@@ -8,7 +8,7 @@ export default function CategoryFilterBar({
   setActiveFilter,
 }) {
   return (
-    <section className="w-full max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-sm">
+    <section className="w-full max-w-[1600px] mx-auto px-margin-mobile lg:px-margin py-space-sm">
       <div
         className={`flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md p-space-md rounded-xl shadow-sm ${
           isDarkMode

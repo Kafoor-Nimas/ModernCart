@@ -3,7 +3,7 @@ import { FEATURED_CATEGORIES } from "../../data/categoriesData";
 
 export default function FeaturedCategories({ isDarkMode }) {
   return (
-    <section className="w-full max-w-7xl mx-auto px-margin-mobile lg:px-margin pt-space-lg pb-space-xl">
+    <section className="w-full max-w-[1600px] mx-auto px-margin-mobile lg:px-margin pt-space-lg pb-space-xl">
       <div className="flex items-end justify-between mb-space-md">
         <div>
           <p
@@ -14,7 +14,7 @@ export default function FeaturedCategories({ isDarkMode }) {
             Flagship Disciplines
           </p>
           <h2
-            className={`font-headline-lg text-headline-lg font-bold tracking-tight ${
+            className={`font-headline-lg text-3xl font-bold tracking-tight ${
               isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
             }`}
           >
@@ -32,7 +32,7 @@ export default function FeaturedCategories({ isDarkMode }) {
           Updated weekly
           <span
             className={`material-symbols-outlined text-[16px] ${
-              isDarkMode ? "text-[#f9bd22]" : "text-tertiary"
+              isDarkMode ? "text-[#f9bd22]" : "text-[#8df740]"
             }`}
           >
             verified
@@ -40,7 +40,7 @@ export default function FeaturedCategories({ isDarkMode }) {
         </a>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter gap-5">
         {FEATURED_CATEGORIES.map((cat) => (
           <Link
             key={cat.id}
