@@ -10,6 +10,7 @@ import Products from "./pages/Products.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import CategoriesPage from "./pages/CategoriesPage.jsx";
 import DealsPage from "./pages/DealsPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 export default function App() {
   return (
@@ -24,6 +25,8 @@ export default function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/deals" element={<DealsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+        
 
           {/* Admin Routes */}
           {/* <Route path="/admin/products" element={<ManageProducts />} />
