@@ -12,9 +12,9 @@ export default function DealsNewsletter({ isDarkMode }) {
   };
 
   return (
-    <section className="max-w-[1700px] mx-auto px-margin-mobile lg:px-margin pb-space-2xl">
+    <section className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
       <div
-        className={`relative rounded-xl p-space-xl md:p-space-2xl shadow-md overflow-hidden text-center flex flex-col items-center ${
+        className={`relative rounded-xl p-10 md:px-38 shadow-md overflow-hidden text-center flex flex-col items-center ${
           isDarkMode
             ? "bg-[#131b2e] border border-[#424754]/50"
             : "bg-surface-container-lowest border border-slate-200/70"

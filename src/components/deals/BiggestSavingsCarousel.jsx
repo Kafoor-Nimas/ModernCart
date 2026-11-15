@@ -15,7 +15,7 @@ export default function BiggestSavingsCarousel({ isDarkMode }) {
     <section className="max-w-[1600px] mx-auto px-margin-mobile lg:px-margin pb-space-2xl">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-space-lg">
         <div>
-          <div className="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-[#ffb4ab] uppercase font-bold tracking-wider mb-1">
+          <div className="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-[#b81820] uppercase font-bold tracking-wider mb-1">
             <span className="material-symbols-outlined text-base">
               local_fire_department
             </span>
@@ -26,7 +26,7 @@ export default function BiggestSavingsCarousel({ isDarkMode }) {
               isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
             }`}
           >
-            Biggest Savings
+            Biggest Savings of the Week
           </h2>
           <p
             className={`font-body-md text-body-md mt-1 ${
