@@ -214,8 +214,8 @@ export default function DealsHero({ isDarkMode }) {
                
 
               
-                  <div className="flex flex-col items-baseline gap-space-xs">
-                    <span className="font-body-sm  text-sm text-right line-through text-[#8c909f]">
+                  <div className="flex flex-col items-end gap-space-xs">
+                    <span className="font-body-sm  text-md line-through text-[#8c909f]">
                       $539.00
                     </span>
                     <span
@@ -233,7 +233,7 @@ export default function DealsHero({ isDarkMode }) {
 
           {/* Decorative Floating Card */}
           <div
-            className={`hidden sm:flex absolute -bottom-6 -left-8 p-space-md rounded-xl shadow-xl items-center gap-space-sm ${
+            className={`hidden sm:flex absolute -bottom-10 -left-8 p-space-md rounded-xl shadow-xl items-center gap-space-sm ${
               isDarkMode
                 ? "bg-[#131b2e] border border-[#424754]/50"
                 : "bg-surface-container-lowest border border-slate-200/70"

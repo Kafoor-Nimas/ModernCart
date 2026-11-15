@@ -15,7 +15,7 @@ export default function DealsFilterBar({
   return (
     <section
       id="deals-grid"
-      className="max-w-[1600px] mx-auto px-margin-mobile lg:px-margin pb-space-lg scroll-mt-24"
+      className="max-w-[1600px] px-margin-mobile lg:px-20 pb-space-lg scroll-mt-24 "
     >
       <div
         className={`p-space-md rounded-xl shadow-sm flex flex-col gap-space-md ${

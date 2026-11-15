@@ -70,7 +70,7 @@ export default function DealsGrid({ isDarkMode, products, onResetFilters }) {
                 className={`group relative rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col overflow-hidden ${
                   isDarkMode
                     ? "bg-[#131b2e] border border-[#424754]/50"
-                    : "bg-surface-container-lowest border border-slate-200/70"
+                    : "bg-surface-container-low border border-slate-200/70"
                 }`}
               >
                 {/* Image & Badges */}
@@ -156,7 +156,9 @@ export default function DealsGrid({ isDarkMode, products, onResetFilters }) {
                   </div>
 
                   <div>
-                    <div className="flex items-baseline gap-space-xs mb-space-md">
+                    <div className="flex items-baseline justify-between gap-space-xs mb-space-md">
+                      <div className="flex items-baseline  gap-space-xs">
+
                       <span
                         className={`font-headline-md text-headline-md font-bold ${
                           isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
@@ -167,18 +169,19 @@ export default function DealsGrid({ isDarkMode, products, onResetFilters }) {
                       <span className="font-body-sm text-body-sm line-through text-[#8c909f]">
                         ${product.originalPrice.toFixed(2)}
                       </span>
-                    </div>
-
+                      </div>
                     <button
                       type="button"
                       onClick={() => addToCart?.(product)}
-                      className="w-full py-2.5 px-space-md bg-[#4d8eff] hover:bg-[#3b82f6] text-[#001a42] font-bold font-label-md text-label-md rounded-lg shadow-sm transition-colors flex items-center justify-center gap-space-xs"
+                      className=" py-2.5 px-space-md bg-[#4d8eff] hover:bg-[#3b82f6] text-[#ffffff] font-bold font-label-md text-label-md rounded-lg shadow-sm transition-colors flex items-center justify-center gap-space-xs"
                     >
                       <span className="material-symbols-outlined text-base">
                         shopping_bag
                       </span>
-                      <span>Add to Cart</span>
+                      
                     </button>
+                    </div>
+
                   </div>
                 </div>
               </div>
