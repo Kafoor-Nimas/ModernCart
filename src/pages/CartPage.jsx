@@ -163,7 +163,7 @@ export default function CartPage() {
           : "bg-[#f8f9ff] text-[#0b1c30]"
       }`}
     >
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Page Header */}
         <div className="flex flex-col gap-2 mb-8">
           <div className="flex items-baseline gap-3">

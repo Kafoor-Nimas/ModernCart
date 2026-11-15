@@ -127,7 +127,7 @@ export default function OrderSummaryCard({
           <div className="flex items-baseline justify-between pt-1">
             <div>
               <span
-                className={`text-lg font-semibold block ${
+                className={`text-lg font-bold block ${
                   isDarkMode ? "text-[#F8FAFC]" : "text-[#0b1c30]"
                 }`}
               >
@@ -167,7 +167,7 @@ export default function OrderSummaryCard({
             <span>Proceed to Checkout</span>
           </button>
           <p
-            className={`text-center text-xs ${
+            className={`text-center text-sm ${
               isDarkMode ? "text-[#94A3B8]" : "text-[#565e74]"
             }`}
           >
