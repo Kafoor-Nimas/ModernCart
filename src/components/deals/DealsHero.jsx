@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import DealsHeroImg from "../../assets/DealsHero.jfif"
 
 export default function DealsHero({ isDarkMode }) {
   return (
@@ -140,17 +141,17 @@ export default function DealsHero({ isDarkMode }) {
         {/* Hero Visual Showcase */}
         <div className="lg:col-span-5 relative">
           <div
-            className={`relative w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-xl overflow-hidden shadow-xl p-space-md flex flex-col justify-between ${
+            className={`relative w-full h-[600px] rounded-xl overflow-hidden shadow-xl p-space-md flex flex-col justify-between ${
               isDarkMode
                 ? "bg-[#131b2e] border border-[#424754]/50"
-                : "bg-surface-container-lowest border border-slate-200/70"
+                : "bg-surface-container-low border border-slate-200/70"
             }`}
           >
-            <div className="relative w-full h-full rounded-lg overflow-hidden bg-[#171f33] group">
+            <div className="relative w-full h-[400px] rounded-lg overflow-hidden bg-[#171f33] group">
               <img
                 alt="Audiophile & Workspace Collective"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ9RSj_sh3tSO-aexSNzpuHAlx2uKbqhzHenajFN7ZPU1_GGvXHs_9OP_c4n7z2WcTndxel5_OBBulAwKJ2s4PBiUkNKisAzi4scEpSKOHCYfD6059w5HqDVrcsfzlJmspRvoywAAgiZ7tXtTZ3L0DmKxiaqbBbB-H97LVG11yWSimAbiSXhMPeaKL8TjCTJ2u7a2lDcKL14X8hRIU9lkozjMRNPYlkaFhjGiURJQ"
+                src={DealsHeroImg}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060e20]/90 via-transparent to-transparent" />
 
@@ -161,6 +162,9 @@ export default function DealsHero({ isDarkMode }) {
                 </span>
               </div>
 
+
+
+            </div>
               {/* Featured badge card overlay */}
               <div
                 className={`absolute bottom-space-md left-space-md right-space-md backdrop-blur-md p-space-md rounded-lg shadow-lg ${
@@ -190,7 +194,9 @@ export default function DealsHero({ isDarkMode }) {
                   </div>
                 </div>
 
-                <h3
+                  <div className="flex items-center justify-between pt-space-xs">
+                      <div>
+                         <h3
                   className={`font-headline-sm text-headline-sm truncate ${
                     isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
                   }`}
@@ -204,9 +210,14 @@ export default function DealsHero({ isDarkMode }) {
                 >
                   Featuring Studio One ANC &amp; Tactile 75 Bundles
                 </p>
+                      </div>
+               
 
-                <div className="flex items-center justify-between pt-space-xs">
-                  <div className="flex items-baseline gap-space-xs">
+              
+                  <div className="flex flex-col items-baseline gap-space-xs">
+                    <span className="font-body-sm  text-sm text-right line-through text-[#8c909f]">
+                      $539.00
+                    </span>
                     <span
                       className={`font-headline-md text-headline-md font-bold ${
                         isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
@@ -214,16 +225,10 @@ export default function DealsHero({ isDarkMode }) {
                     >
                       $379.00
                     </span>
-                    <span className="font-body-sm text-body-sm line-through text-[#8c909f]">
-                      $539.00
-                    </span>
                   </div>
-                  <span className="font-label-sm text-label-sm text-[#f9bd22] font-bold bg-[#f9bd22]/15 px-space-xs py-0.5 rounded">
-                    Saved $160
-                  </span>
+                 
                 </div>
               </div>
-            </div>
           </div>
 
           {/* Decorative Floating Card */}
