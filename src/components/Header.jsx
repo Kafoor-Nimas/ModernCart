@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
+import { SEARCH_CATALOG } from "../data/searchCatalog";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -11,11 +12,29 @@ const NAV_LINKS = [
 
 export default function Header() {
   const { cartCount, wishlist, isDarkMode, toggleDarkMode } = useApp();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [searchQuery, setSearchQuery] = useState(
+    () => new URLSearchParams(location.search).get("search") ?? ""
+  );
+  const [prevSearch, setPrevSearch] = useState(location.search);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const desktopInputRef = useRef(null);
+  const searchContainerRef = useRef(null);
+
+  // Sync input when URL query param changes (no useEffect needed)
+  if (location.search !== prevSearch) {
+    setPrevSearch(location.search);
+    const q = new URLSearchParams(location.search).get("search");
+    if (q !== null) {
+      setSearchQuery(q);
+    }
+  }
+
+  // Close mobile menu on desktop resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -25,6 +44,67 @@ export default function Header() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Global Cmd+K / Ctrl+K shortcut & Escape to close
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        desktopInputRef.current?.focus();
+        setIsSearchOpen(true);
+      } else if (e.key === "Escape") {
+        setIsSearchOpen(false);
+        desktopInputRef.current?.blur();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(e.target)
+      ) {
+        setIsSearchOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const searchResults = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return [];
+    return SEARCH_CATALOG.filter(
+      (item) =>
+        item.title.toLowerCase().includes(q) ||
+        item.brand.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q)
+    ).slice(0, 6);
+  }, [searchQuery]);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const trimmed = searchQuery.trim();
+    setIsSearchOpen(false);
+    setIsMobileMenuOpen(false);
+
+    if (trimmed) {
+      navigate(`/products?search=${encodeURIComponent(trimmed)}`);
+    } else {
+      navigate("/products");
+    }
+  };
+
+  const handleSelectResult = (item) => {
+    setIsSearchOpen(false);
+    setIsMobileMenuOpen(false);
+    setSearchQuery("");
+    navigate(item.route);
+  };
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -37,7 +117,7 @@ export default function Header() {
       }`}
     >
       <div className="h-20 max-w-[1700px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-3 sm:gap-6">
-        {/* Left: Hamburger (Mobile/Tablet) + Brand + Desktop Nav */}
+        {/* Left: Hamburger + Brand + Desktop Nav */}
         <div className="flex items-center gap-3 sm:gap-8">
           <button
             type="button"
@@ -97,8 +177,14 @@ export default function Header() {
         </div>
 
         {/* Center: Global Search Bar (md and up) */}
-        <div className="flex-1 max-w-lg hidden md:block">
-          <div className="relative flex items-center w-full">
+        <div
+          ref={searchContainerRef}
+          className="flex-1 max-w-lg hidden md:block relative"
+        >
+          <form
+            onSubmit={handleSearchSubmit}
+            className="relative flex items-center w-full"
+          >
             <span
               className="material-symbols-outlined absolute left-3 text-[20px] pointer-events-none"
               style={{ color: isDarkMode ? "#737686" : "#94A3B8" }}
@@ -106,7 +192,8 @@ export default function Header() {
               search
             </span>
             <input
-              className={`w-full pl-10 pr-14 py-2 text-sm rounded-xl border focus:outline-none focus:border-[#3B82F6] transition-all ${
+              ref={desktopInputRef}
+              className={`w-full pl-10 pr-20 py-2 text-sm rounded-xl border focus:outline-none focus:border-[#3B82F6] transition-all ${
                 isDarkMode
                   ? "bg-[#1E293B] border-[#334155] text-[#F8FAFC] placeholder:text-[#737686]"
                   : "bg-slate-100 border-slate-200 text-slate-900 placeholder:text-slate-400"
@@ -114,19 +201,135 @@ export default function Header() {
               placeholder="Search products, brands, and categories..."
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setIsSearchOpen(true)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setIsSearchOpen(true);
+              }}
             />
+
+            {searchQuery ? (
+              <button
+                type="button"
+                aria-label="Clear search"
+                onClick={() => {
+                  setSearchQuery("");
+                  desktopInputRef.current?.focus();
+                }}
+                className={`absolute right-3 p-0.5 rounded-full transition-colors ${
+                  isDarkMode
+                    ? "text-[#94A3B8] hover:text-white hover:bg-[#334155]"
+                    : "text-slate-400 hover:text-slate-700 hover:bg-slate-200"
+                }`}
+              >
+                <span className="material-symbols-outlined text-[16px] block">
+                  close
+                </span>
+              </button>
+            ) : (
+              <div
+                className={`absolute right-3 flex items-center gap-0.5 px-1.5 py-0.5 rounded border text-xs font-semibold pointer-events-none ${
+                  isDarkMode
+                    ? "bg-[#111827] border-[#334155] text-[#94A3B8]"
+                    : "bg-slate-200 border-slate-300 text-slate-500"
+                }`}
+              >
+                <span>⌘</span>
+                <span>K</span>
+              </div>
+            )}
+          </form>
+
+          {/* Live Search Results Dropdown */}
+          {isSearchOpen && searchQuery.trim().length > 0 && (
             <div
-              className={`absolute right-3 flex items-center gap-0.5 px-1.5 py-0.5 rounded border text-xs font-semibold pointer-events-none ${
+              className={`absolute left-0 right-0 mt-2 rounded-2xl border overflow-hidden shadow-2xl z-50 ${
                 isDarkMode
-                  ? "bg-[#111827] border-[#334155] text-[#94A3B8]"
-                  : "bg-slate-200 border-slate-300 text-slate-500"
+                  ? "bg-[#1E293B] border-[#334155] text-[#F8FAFC]"
+                  : "bg-white border-slate-200 text-slate-900"
               }`}
             >
-              <span>⌘</span>
-              <span>K</span>
+              {searchResults.length > 0 ? (
+                <>
+                  <div className="max-h-80 overflow-y-auto divide-y divide-slate-200/10">
+                    {searchResults.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => handleSelectResult(item)}
+                        className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
+                          isDarkMode
+                            ? "hover:bg-[#111827]"
+                            : "hover:bg-slate-50"
+                        }`}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className={`w-11 h-11 rounded-lg object-cover shrink-0 ${
+                            isDarkMode ? "bg-[#111827]" : "bg-slate-100"
+                          }`}
+                        />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-semibold truncate">
+                            {item.title}
+                          </p>
+                          <p
+                            className={`text-xs truncate ${
+                              isDarkMode ? "text-[#94A3B8]" : "text-slate-500"
+                            }`}
+                          >
+                            {item.brand} • {item.category}
+                          </p>
+                        </div>
+                        <span
+                          className={`text-sm font-bold shrink-0 ${
+                            isDarkMode ? "text-[#60A5FA]" : "text-[#2563EB]"
+                          }`}
+                        >
+                          ${item.price.toFixed(2)}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleSearchSubmit}
+                    className={`w-full px-4 py-2.5 text-xs font-semibold flex items-center justify-between border-t transition-colors ${
+                      isDarkMode
+                        ? "bg-[#111827] border-[#334155] text-[#60A5FA] hover:text-[#93C5FD]"
+                        : "bg-slate-50 border-slate-200 text-[#2563EB] hover:text-[#1D4ED8]"
+                    }`}
+                  >
+                    <span>
+                      View all results for &ldquo;{searchQuery.trim()}&rdquo;
+                    </span>
+                    <span className="material-symbols-outlined text-[16px]">
+                      arrow_forward
+                    </span>
+                  </button>
+                </>
+              ) : (
+                <div className="px-4 py-6 text-center">
+                  <p
+                    className={`text-sm font-medium ${
+                      isDarkMode ? "text-[#CBD5E1]" : "text-slate-700"
+                    }`}
+                  >
+                    No matches found for &ldquo;{searchQuery.trim()}&rdquo;
+                  </p>
+                  <p
+                    className={`text-xs mt-1 ${
+                      isDarkMode ? "text-[#94A3B8]" : "text-slate-500"
+                    }`}
+                  >
+                    Try searching for headphones, leather, charger, or audio.
+                  </p>
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
 
         {/* Right: User Actions */}
@@ -218,7 +421,10 @@ export default function Header() {
           }`}
         >
           {/* Mobile Search Bar */}
-          <div className="md:hidden relative flex items-center w-full">
+          <form
+            onSubmit={handleSearchSubmit}
+            className="md:hidden relative flex items-center w-full"
+          >
             <span
               className="material-symbols-outlined absolute left-3 text-[20px] pointer-events-none"
               style={{ color: isDarkMode ? "#737686" : "#94A3B8" }}
@@ -236,7 +442,7 @@ export default function Header() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </div>
+          </form>
 
           {/* Mobile Navigation Links */}
           <nav className="flex flex-col space-y-1">
@@ -282,7 +488,7 @@ export default function Header() {
                   User Account
                 </span>
                 <span className="text-xs text-slate-400">
-                  Manage profile & orders
+                  Manage profile &amp; orders
                 </span>
               </div>
             </div>
