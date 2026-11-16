@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import ProductBreadcrumb from "../components/ProductBreadcrumb";
 import ProductGallery from "../components/ProductGallery";
 import ProductBuySection from "../components/ProductBuySection";
@@ -11,10 +9,12 @@ import img1 from "../assets/img1.jfif";
 import img2 from "../assets/img2.jfif";
 import img3 from "../assets/img3.jfif";
 import img4 from "../assets/img4.jfif";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ProductDetails() {
   const { isDarkMode } = useApp();
+  const navigate = useNavigate();
 
   // State Management
   const [mainViewIndex, setMainViewIndex] = useState(0);
@@ -49,7 +49,6 @@ export default function ProductDetails() {
         color: isDarkMode ? "#F8FAFC" : undefined,
       }}
     >
-      <Header />
 
       <main
         className="w-full pt-20 flex-1"
@@ -75,9 +74,11 @@ export default function ProductDetails() {
                 setQty={setQty}
                 isWishlisted={isWishlisted}
                 onToggleWishlist={() => setIsWishlisted(!isWishlisted)}
-                onAddToCart={() =>
-                  showToast(`Added ${qty}x Studio One ANC to your bag`)
-                }
+               onAddToCart={() => {
+                console.log("Add to cart clicked!");
+    showToast(`Added ${qty}x Studio One ANC to your bag`);
+    navigate("/cart");
+  }}
                 onBuyNow={() =>
                   showToast("Proceeding to Express 1-Click Checkout...")
                 }
@@ -96,7 +97,6 @@ export default function ProductDetails() {
         </div>
       </main>
 
-      <Footer />
 
       {/* Dynamic Toast Popup */}
       {toastMessage && (

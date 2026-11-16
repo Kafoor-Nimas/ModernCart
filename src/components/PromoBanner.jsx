@@ -1,5 +1,6 @@
 import { useApp } from "../context/AppContext";
 import promo from "../assets/promo.jfif";
+import { Link } from "react-router-dom";
 
 
 export default function PromoBanner() {
@@ -55,7 +56,7 @@ export default function PromoBanner() {
           </p>
 
           <div className="flex items-center gap-4 pt-3">
-            <a
+            <Link to="/deals"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold shadow-md transition-colors"
               href="#featured"
               style={{
@@ -68,7 +69,7 @@ export default function PromoBanner() {
               <span className="material-symbols-outlined text-[18px]">
                 arrow_outward
               </span>
-            </a>
+            </Link>
             <span className="text-sm" style={{ color: "#94A3B8" }}>
               Limited allocation available
             </span>

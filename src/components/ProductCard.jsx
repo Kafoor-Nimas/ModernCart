@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 
 export default function ProductCard({ product }) {
   const { addToCart, toggleWishlist, wishlist, isDarkMode } = useApp();
   const isFavorited = wishlist?.includes(product.id);
+  const navigate = useNavigate();
 
   const handleWishlistClick = (e) => {
     e.preventDefault();
@@ -15,6 +16,8 @@ export default function ProductCard({ product }) {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
+    navigate("/cart");
+
   };
 
   return (

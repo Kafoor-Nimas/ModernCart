@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 
 const NAV_LINKS = [
@@ -14,6 +14,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -155,6 +156,7 @@ export default function Header() {
                 : "hover:bg-slate-100 text-slate-600"
             }`}
             type="button"
+            onClick={() => navigate("/cart")}
           >
             <span className="material-symbols-outlined text-[22px] sm:text-[24px]">
               shopping_bag
