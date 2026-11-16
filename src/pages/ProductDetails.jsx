@@ -4,7 +4,7 @@ import ProductGallery from "../components/ProductGallery";
 import ProductBuySection from "../components/ProductBuySection";
 import ProductTabsSection from "../components/ProductTabsSection";
 import RelatedHardwareSection from "../components/RelatedHardwareSection";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import img1 from "../assets/img1.jfif";
 import img2 from "../assets/img2.jfif";
 import img3 from "../assets/img3.jfif";

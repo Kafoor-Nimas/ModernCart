@@ -1,4 +1,4 @@
-import { useApp } from '../context/AppContext';
+import { useApp } from "../context/useApp";
 import ProductCard from './ProductCard'
 
 const FeaturedSection = ({filteredFeatured,activeCategory,setActiveCategory}) => {

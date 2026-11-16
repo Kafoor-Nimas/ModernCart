@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { POPULAR_PRODUCTS } from "../../data/categoriesData";
-import { useApp } from "../../context/AppContext";
+import { useApp } from "../../context/useApp";
 
 export default function PopularProductsGrid({ isDarkMode }) {
   const [wishlist, setWishlist] = useState({});

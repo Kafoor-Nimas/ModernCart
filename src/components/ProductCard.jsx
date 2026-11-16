@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 
 export default function ProductCard({ product }) {
   const { addToCart, toggleWishlist, wishlist, isDarkMode } = useApp();

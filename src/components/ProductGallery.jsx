@@ -1,4 +1,4 @@
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 
 export default function ProductGallery({ mainViewIndex, setMainView, images, viewAlts }) {
   const { isDarkMode } = useApp();

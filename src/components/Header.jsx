@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import { SEARCH_CATALOG } from "../data/searchCatalog";
 
 const NAV_LINKS = [

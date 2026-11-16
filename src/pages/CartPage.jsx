@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import { FREE_SHIPPING_THRESHOLD, INITIAL_CART_ITEMS, } from "../data/cardData";
 
 

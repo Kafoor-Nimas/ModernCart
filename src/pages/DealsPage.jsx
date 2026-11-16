@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import { DEALS_PRODUCTS, DEAL_CATEGORY_PILLS } from "../data/dealsData";
 
 import DealsHero from "../components/deals/DealsHero";

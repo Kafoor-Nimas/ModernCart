@@ -1,4 +1,4 @@
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 
 export default function ProductTabsSection({ activeTab, setActiveTab }) {
   const { isDarkMode } = useApp();

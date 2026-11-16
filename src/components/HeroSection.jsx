@@ -1,4 +1,4 @@
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import hero from "../assets/hero.jfif";
 
 export default function HeroSection() {

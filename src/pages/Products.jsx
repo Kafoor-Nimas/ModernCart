@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import ProductCatalogCard from "../components/ProductCatalogCard";
 import ProductFilterSidebar from "../components/ProductFilterSidebar";
 import { PRODUCTS_DATA } from "../data/data";

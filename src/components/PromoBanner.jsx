@@ -1,4 +1,4 @@
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import promo from "../assets/promo.jfif";
 import { Link } from "react-router-dom";
 

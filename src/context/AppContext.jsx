@@ -1,6 +1,5 @@
-import  { createContext, useContext, useState } from "react";
-
-const AppContext = createContext();
+import { useState } from "react";
+import { AppContext } from "./useApp";
 
 export function AppProvider({ children }) {
   const [cart, setCart] = useState([]);
@@ -71,5 +70,3 @@ export function AppProvider({ children }) {
     </AppContext.Provider>
   );
 }
-
-export const useApp = () => useContext(AppContext);

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 
 export default function BestSellersSection({ bestSellers }) {
   const { addToCart, isDarkMode } = useApp();

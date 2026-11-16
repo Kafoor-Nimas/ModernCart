@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { BIGGEST_SAVINGS } from "../../data/dealsData";
-import { useApp } from "../../context/AppContext";
+import { useApp } from "../../context/useApp";
 
 export default function BiggestSavingsCarousel({ isDarkMode }) {
   const carouselRef = useRef(null);
