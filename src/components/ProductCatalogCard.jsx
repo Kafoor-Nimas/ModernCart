@@ -1,9 +1,11 @@
-import  { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 
 export default function ProductCatalogCard({ product, viewMode }) {
   const { addToCart, toggleWishlist, wishlist, isDarkMode } = useApp();
   const [isAdding, setIsAdding] = useState(false);
+  const navigate = useNavigate();
   const isFavorited = wishlist.includes(product.id);
 
   const handleAddToCart = () => {
@@ -11,7 +13,8 @@ export default function ProductCatalogCard({ product, viewMode }) {
     addToCart(product);
     setTimeout(() => {
       setIsAdding(false);
-    }, 1200);
+      navigate("/cart");
+    }, 2000);
   };
 
   return (
@@ -132,8 +135,10 @@ export default function ProductCatalogCard({ product, viewMode }) {
                 className="w-1.5 h-1.5 rounded-full"
                 style={{
                   backgroundColor: product.stockStatus.includes("Low Stock")
-                    ? "#F59E0B": product.stockStatus.includes("Out Of Stock")?"#FF0000":"#22C55E",
-                    
+                    ? "#F59E0B"
+                    : product.stockStatus.includes("Out Of Stock")
+                    ? "#FF0000"
+                    : "#22C55E",
                 }}
               ></span>
               <span
@@ -143,7 +148,11 @@ export default function ProductCatalogCard({ product, viewMode }) {
                     ? isDarkMode
                       ? "#FBBF24"
                       : "#D97706"
-                    : product.stockStatus.includes("Out Of Stock")?isDarkMode? "#d62013":"#FF0000":"#22C55E",
+                    : product.stockStatus.includes("Out Of Stock")
+                    ? isDarkMode
+                      ? "#d62013"
+                      : "#FF0000"
+                    : "#22C55E",
                 }}
               >
                 {product.stockStatus}

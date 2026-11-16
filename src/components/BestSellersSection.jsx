@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 
 export default function BestSellersSection({ bestSellers }) {
@@ -54,7 +55,9 @@ export default function BestSellersSection({ bestSellers }) {
               type="button"
               onClick={() => scroll("left")}
             >
-              <span className="material-symbols-outlined text-[20px]">chevron_left</span>
+              <span className="material-symbols-outlined text-[20px]">
+                chevron_left
+              </span>
             </button>
             <button
               aria-label="Next"
@@ -66,7 +69,9 @@ export default function BestSellersSection({ bestSellers }) {
               type="button"
               onClick={() => scroll("right")}
             >
-              <span className="material-symbols-outlined text-[20px]">chevron_right</span>
+              <span className="material-symbols-outlined text-[20px]">
+                chevron_right
+              </span>
             </button>
           </div>
         </div>
@@ -161,15 +166,19 @@ export default function BestSellersSection({ bestSellers }) {
                     </span>
                   )}
                 </div>
-                <button
-                  className="px-3 py-1.5 rounded-lg text-white text-[16px] font-semibold hover:brightness-110 transition-colors flex items-center gap-1 active:scale-95"
+
+                <Link
+                  to="/cart"
+                  aria-label={`Add ${item.title} to cart and view cart`}
+                  title="Add to Cart"
+                  className="w-10 h-10 rounded-xl text-white hover:brightness-110 transition-all flex items-center justify-center active:scale-95 shrink-0"
                   style={{ backgroundColor: "#3B82F6" }}
-                  type="button"
                   onClick={() => addToCart(item)}
                 >
-                  <span className="material-symbols-outlined text-[16px]">add</span>
-                  Add
-                </button>
+                  <span className="material-symbols-outlined text-[20px]">
+                    shopping_cart
+                  </span>
+                </Link>
               </div>
             </div>
           ))}

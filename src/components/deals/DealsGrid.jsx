@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
 
 export default function DealsGrid({ isDarkMode, products, onResetFilters }) {
@@ -5,6 +6,12 @@ export default function DealsGrid({ isDarkMode, products, onResetFilters }) {
   const wishlist = appContext?.wishlist || [];
   const toggleWishlist = appContext?.toggleWishlist;
   const addToCart = appContext?.addToCart;
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    addToCart?.(product);
+    navigate("/cart");
+  };
 
   return (
     <section className="max-w-[1600px] mx-auto px-margin-mobile lg:px-margin pb-space-2xl">
@@ -157,31 +164,28 @@ export default function DealsGrid({ isDarkMode, products, onResetFilters }) {
 
                   <div>
                     <div className="flex items-baseline justify-between gap-space-xs mb-space-md">
-                      <div className="flex items-baseline  gap-space-xs">
-
-                      <span
-                        className={`font-headline-md text-headline-md font-bold ${
-                          isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
-                        }`}
-                      >
-                        ${product.price.toFixed(2)}
-                      </span>
-                      <span className="font-body-sm text-body-sm line-through text-[#8c909f]">
-                        ${product.originalPrice.toFixed(2)}
-                      </span>
+                      <div className="flex items-baseline gap-space-xs">
+                        <span
+                          className={`font-headline-md text-headline-md font-bold ${
+                            isDarkMode ? "text-[#dae2fd]" : "text-on-surface"
+                          }`}
+                        >
+                          ${product.price.toFixed(2)}
+                        </span>
+                        <span className="font-body-sm text-body-sm line-through text-[#8c909f]">
+                          ${product.originalPrice.toFixed(2)}
+                        </span>
                       </div>
-                    <button
-                      type="button"
-                      onClick={() => addToCart?.(product)}
-                      className=" py-2.5 px-space-md bg-[#4d8eff] hover:bg-[#3b82f6] text-[#ffffff] font-bold font-label-md text-label-md rounded-lg shadow-sm transition-colors flex items-center justify-center gap-space-xs"
-                    >
-                      <span className="material-symbols-outlined text-base">
-                        shopping_bag
-                      </span>
-                      
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => handleAddToCart(product)}
+                        className="py-2.5 px-space-md bg-[#4d8eff] hover:bg-[#3b82f6] text-[#ffffff] font-bold font-label-md text-label-md rounded-lg shadow-sm transition-colors flex items-center justify-center gap-space-xs"
+                      >
+                        <span className="material-symbols-outlined text-base">
+                          shopping_bag
+                        </span>
+                      </button>
                     </div>
-
                   </div>
                 </div>
               </div>

@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { POPULAR_PRODUCTS } from "../../data/categoriesData";
+import { useApp } from "../../context/AppContext";
 
 export default function PopularProductsGrid({ isDarkMode }) {
   const [wishlist, setWishlist] = useState({});
   const [addedToCart, setAddedToCart] = useState({});
+  const { addToCart } = useApp();
+  const navigate = useNavigate();
 
   const toggleWishlist = (e, id) => {
     e.preventDefault();
@@ -12,14 +15,24 @@ export default function PopularProductsGrid({ isDarkMode }) {
     setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const handleAddToCart = (e, id) => {
+  const handleAddToCart = (e, prod) => {
     e.preventDefault();
     e.stopPropagation();
-    if (addedToCart[id]) return;
-    setAddedToCart((prev) => ({ ...prev, [id]: true }));
-    setTimeout(() => {
-      setAddedToCart((prev) => ({ ...prev, [id]: false }));
-    }, 1500);
+    if (addedToCart[prod.id]) return;
+
+    const numericPrice =
+      typeof prod.price === "number"
+        ? prod.price
+        : parseFloat(String(prod.price).replace(/[^0-9.]/g, "")) || 0;
+
+    addToCart({
+      ...prod,
+      price: numericPrice,
+      image: prod.image || prod.lightImg,
+    });
+
+    setAddedToCart((prev) => ({ ...prev, [prod.id]: true }));
+    navigate("/cart");
   };
 
   return (
@@ -210,7 +223,7 @@ export default function PopularProductsGrid({ isDarkMode }) {
 
                 <button
                   type="button"
-                  onClick={(e) => handleAddToCart(e, prod.id)}
+                  onClick={(e) => handleAddToCart(e, prod)}
                   className={`px-3 py-2 rounded-lg font-label-md text-label-md font-semibold flex items-center gap-1 transition-all active:scale-95 ${
                     isAdded
                       ? isDarkMode
